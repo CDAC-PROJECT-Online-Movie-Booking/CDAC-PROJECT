@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.bookmymovie.model.User.Role;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -15,7 +17,9 @@ import lombok.*;
 @Entity
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "movies")
 
 public class Movie {
@@ -43,6 +47,6 @@ public class Movie {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-    private List<Showtime> showtimes = new ArrayList<>();
+    private List<ShowTime> showtimes = new ArrayList<>();
 
 }

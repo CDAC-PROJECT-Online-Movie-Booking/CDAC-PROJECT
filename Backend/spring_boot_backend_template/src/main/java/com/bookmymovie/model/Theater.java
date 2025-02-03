@@ -1,7 +1,10 @@
 package com.bookmymovie.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.bookmymovie.model.User.Role;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -11,6 +14,8 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "theaters")
 public class Theater {
     @Id
@@ -28,5 +33,5 @@ public class Theater {
     private City city;
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
-    private List<Screen> screens = new ArrayList()<>();
+    private List<Screen> screens = new ArrayList<>();
 }

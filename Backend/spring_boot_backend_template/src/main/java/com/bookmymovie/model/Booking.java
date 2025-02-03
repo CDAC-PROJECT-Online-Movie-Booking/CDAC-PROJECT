@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -14,6 +15,8 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "bookings")
 public class Booking {
     @Id
@@ -35,10 +38,10 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "showtime_id")
-    private Showtime showtime;
+    private ShowTime showtime;
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
-    private List<BookingSeat> seats = new ArrayList()<>();
+    private List<BookingSeat> seats = new ArrayList<>();
 
     @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
     private Payment payment;
