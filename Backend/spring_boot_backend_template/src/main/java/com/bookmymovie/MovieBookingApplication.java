@@ -8,10 +8,10 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class DemoApplication {
+public class MovieBookingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(MovieBookingApplication.class, args);
 	}
 		@Bean // equivalent to <bean id ..../> in xml file
 	public ModelMapper modelMapper() {
