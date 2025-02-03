@@ -1,5 +1,6 @@
 package com.bookmymovie.model;
 
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -26,4 +27,5 @@ public class ShowtimeSeatPrice {
 
     @NotNull
     private Double price; // Ensure there are no hidden characters here
+
 }
