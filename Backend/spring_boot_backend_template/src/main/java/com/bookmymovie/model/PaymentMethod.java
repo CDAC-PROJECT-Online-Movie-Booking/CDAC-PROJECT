@@ -7,16 +7,20 @@ import lombok.*;
 @Entity
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
-@Table(name = "payment_methods")
 
+
+@AllArgsConstructor
+@Table(name = "payment_methods")
 public class PaymentMethod {
-	@Id
+    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long methodId;
 
     @NotBlank
     @Column(unique = true)
     private String name; // e.g., "Credit Card", "UPI"
+
+
 
 }
