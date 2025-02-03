@@ -14,7 +14,6 @@ import lombok.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor        
-@Builder
 @Table(name = "users")
 @Getter
 @Setter
