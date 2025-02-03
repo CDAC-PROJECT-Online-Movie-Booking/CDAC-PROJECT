@@ -3,7 +3,7 @@ package com.bookmymovie.model;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
-
+import com.bookmymovie.model.PaymentStatus;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -39,5 +39,5 @@ public class Payment {
     @JoinColumn(name = "method_id")
     private PaymentMethod paymentMethod;
 
-    public enum PaymentStatus { SUCCESS, FAILED, PENDING }
+    
 }
