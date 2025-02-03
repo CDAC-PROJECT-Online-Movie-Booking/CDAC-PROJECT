@@ -1,9 +1,11 @@
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+package com.bookmymovie.model;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.bookmymovie.model.User.Role;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -13,13 +15,15 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @IdClass(ShowtimeSeatPriceId.class)
+@Getter
+@Setter
 @Table(name = "showtime_seat_prices")
 public class ShowtimeSeatPrice{
 	
 	@Id
 	@ManyToOne
 	@JoinColumn(name="showtime_id")
-	private Showtime showtime;
+	private ShowTime showtime;
 	
     @Id
     @ManyToOne

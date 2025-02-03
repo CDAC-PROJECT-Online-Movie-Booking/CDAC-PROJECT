@@ -1,5 +1,10 @@
 package com.bookmymovie.model;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.bookmymovie.model.User.Role;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -8,6 +13,8 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "booking_seats")
 public class BookingSeat {
     @Id

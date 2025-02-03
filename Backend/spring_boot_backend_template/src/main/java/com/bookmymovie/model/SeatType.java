@@ -1,5 +1,10 @@
 package com.bookmymovie.model;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.bookmymovie.model.User.Role;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +18,8 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "seat_types")
 public class SeatType {
     @Id

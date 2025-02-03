@@ -14,7 +14,7 @@ import lombok.*;
 @Entity
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor           //currently it is not necessary
+@AllArgsConstructor        
 @Builder
 @Table(name = "users")
 
