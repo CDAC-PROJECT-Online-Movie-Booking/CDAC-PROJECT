@@ -12,11 +12,13 @@ import lombok.NoArgsConstructor;
 import lombok.*;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor        
 @Builder
 @Table(name = "users")
+@Getter
+@Setter
+@ToString(exclude = {"bookings" , "password"})
 
 public class User {
 	
@@ -43,6 +45,5 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 
-    public enum Role { USER, ADMIN }
 
 }

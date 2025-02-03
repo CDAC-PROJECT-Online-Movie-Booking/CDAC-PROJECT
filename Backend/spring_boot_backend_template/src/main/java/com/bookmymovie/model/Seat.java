@@ -1,10 +1,8 @@
 package com.bookmymovie.model;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bookmymovie.model.User.Role;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -13,11 +11,11 @@ import lombok.*;
 
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString(exclude = {"screen" , "seatType","bookingSeats"})
 @Table(name = "seats", 
     uniqueConstraints = @UniqueConstraint(columnNames = {"screen_id", "seat_row", "seat_number"}))
 public class Seat {

@@ -1,22 +1,19 @@
 package com.bookmymovie.model;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.bookmymovie.model.User.Role;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Table(name = "theaters")
+@ToString(exclude = "screens")
 public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

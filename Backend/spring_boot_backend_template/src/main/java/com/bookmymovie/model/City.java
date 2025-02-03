@@ -1,10 +1,5 @@
 package com.bookmymovie.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import com.bookmymovie.model.User.Role;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +10,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

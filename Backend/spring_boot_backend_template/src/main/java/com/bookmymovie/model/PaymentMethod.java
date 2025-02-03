@@ -1,16 +1,10 @@
 package com.bookmymovie.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import com.bookmymovie.model.User.Role;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

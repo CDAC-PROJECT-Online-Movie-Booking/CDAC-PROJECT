@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.bookmymovie.model.User.Role;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -15,11 +14,11 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString(exclude = "showtimes")
 @Table(name = "movies")
 
 public class Movie {

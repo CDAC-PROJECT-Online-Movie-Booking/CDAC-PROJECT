@@ -1,21 +1,17 @@
 package com.bookmymovie.model;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import com.bookmymovie.model.User.Role;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Table(name = "booking_seats")
+@ToString(exclude = {"booking" ,"seat"})
 public class BookingSeat {
     @Id
     @ManyToOne
