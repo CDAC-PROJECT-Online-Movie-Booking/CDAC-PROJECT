@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import com.bookmymovie.model.BookingStatus;
 
 @Entity
 @NoArgsConstructor
@@ -44,5 +45,5 @@ public class Booking {
     @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
     private Payment payment;
 
-    public enum BookingStatus { CONFIRMED, CANCELLED, PENDING }
+    
 }

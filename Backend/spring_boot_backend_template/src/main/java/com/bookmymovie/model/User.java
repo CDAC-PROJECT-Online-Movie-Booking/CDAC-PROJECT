@@ -12,13 +12,12 @@ import lombok.NoArgsConstructor;
 import lombok.*;
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor        
 @Table(name = "users")
 @Getter
 @Setter
-@ToString(exclude = {"bookings" , "password"})
-
 public class User {
 	
 	@Id
