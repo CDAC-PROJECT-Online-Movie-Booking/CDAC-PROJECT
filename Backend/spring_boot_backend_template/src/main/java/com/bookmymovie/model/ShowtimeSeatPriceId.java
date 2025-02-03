@@ -6,13 +6,12 @@ import jakarta.persistence.Embeddable;
 import lombok.*;
 
 @Embeddable
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-public class ShowtimeSeatPriceId implements Serializable
-{
+public class ShowtimeSeatPriceId implements Serializable {
+   
 	private static final long serialVersionUID = 1L;
-	private Long showtime;
-	private Long seatType;
+	private Long showtimeId;
+    private Long seatTypeId;
 }
