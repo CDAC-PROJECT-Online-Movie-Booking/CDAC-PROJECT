@@ -28,4 +28,5 @@ public class ShowtimeSeatPrice {
     @NotNull
     private Double price; // Ensure there are no hidden characters here
 
+
 }
