@@ -2,15 +2,18 @@ package com.bookmymovie.service;
 
 import java.util.List;
 
+import com.bookmymovie.dto.ApiResponse;
+import com.bookmymovie.dto.UserRequest;
+import com.bookmymovie.dto.UserResponse;
 import com.bookmymovie.model.User;
 
 public interface UserService {
 
-	List<User> getAllUsers();
+	List<UserResponse> getAllUsers();
 	
-	User getUserById(Long userId);
+	UserResponse getUserById(Long userId);
 
-	User updateUser(Long userId, User updatedUser);
+	ApiResponse updateUser(Long userId, UserRequest updatedUser);
 	
-	void deleteUser(Long userId);
+	ApiResponse deleteUser(Long userId);
 }
