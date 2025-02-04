@@ -2,5 +2,5 @@ package com.bookmymovie.model;
 
 public enum PaymentStatus {
 
-	 SUCCESS, FAILED, PENDING 
+	 SUCCESS, FAILED, PENDING ,REFUNDED
 }

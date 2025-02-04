@@ -35,7 +35,7 @@ public class PaymentServiceImpl implements PaymentService {
     public void processRefund(Long paymentId) {
         Payment payment = paymentRepo.findById(paymentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Payment not found"));
-        payment.setStatus(PaymentStatus.FAILED);
+        payment.setStatus(PaymentStatus.REFUNDED);
         paymentRepo.save(payment);
     }
 }

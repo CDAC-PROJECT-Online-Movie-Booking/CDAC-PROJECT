@@ -1,6 +1,7 @@
 package com.bookmymovie.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +48,9 @@ public class Showtime {
 
     @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL)
     private List<ShowtimeSeatPrice> seatPrices = new ArrayList<>();
+    
+    public LocalDateTime getDateTime() {
+        return LocalDateTime.of(date, startTime);
+    }
 
 }

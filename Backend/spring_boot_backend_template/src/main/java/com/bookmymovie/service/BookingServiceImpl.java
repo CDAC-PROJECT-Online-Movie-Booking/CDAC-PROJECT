@@ -1,5 +1,6 @@
 package com.bookmymovie.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,5 +85,32 @@ public class BookingServiceImpl implements BookingService {
 	        throw new SeatNotAvailableException("One or more seats are already booked");
 	    }
 	}
+
+	@Override
+	public List<Booking> getBookingsByUser(User user) {
+		return bookingRepo.findByUser(user);
+	}
  
+	@Transactional
+	public Booking cancelBooking(Long bookingId) {
+	    Booking booking = bookingRepo.findById(bookingId)
+	        .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+	    
+	    // Get showtime datetime
+	    LocalDateTime showtimeDateTime = booking.getShowtime().getDateTime();
+	    
+	    // Validate cancellation window (e.g., 24 hours before showtime)
+	    if (showtimeDateTime.isBefore(LocalDateTime.now().plusHours(24))) {
+	        throw new IllegalStateException("Cancellation not allowed within 24 hours of showtime");
+	    }
+	    
+	    booking.setStatus(BookingStatus.CANCELLED);
+	    
+	    // Process refund
+	    if (booking.getPayment() != null) {
+	        paymentService.processRefund(booking.getPayment().getPaymentId());
+	    }
+	    
+	    return bookingRepo.save(booking);
+	}
 }
