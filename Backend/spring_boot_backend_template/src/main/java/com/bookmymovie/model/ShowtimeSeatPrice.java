@@ -7,6 +7,7 @@ import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "showtime_seat_prices")
@@ -18,7 +19,7 @@ public class ShowtimeSeatPrice {
     @ManyToOne
     @MapsId("showtimeId") // Maps to showtimeId in ShowtimeSeatPriceId
     @JoinColumn(name = "showtime_id")
-    private ShowTime showtime;
+    private Showtime showtime;
 
     @ManyToOne
     @MapsId("seatTypeId") // Maps to seatTypeId in ShowtimeSeatPriceId
