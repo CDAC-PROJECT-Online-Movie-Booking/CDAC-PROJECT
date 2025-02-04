@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.repository.BookingRepository;
@@ -14,8 +15,11 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ReportService {
-    private final PaymentRepository paymentRepo;
-    private final BookingRepository bookingRepo;
+	
+	@Autowired
+    private PaymentRepository paymentRepo;
+	@Autowired
+    private BookingRepository bookingRepo;
 
     public Double getTotalRevenue() {
         return paymentRepo.getTotalRevenue();

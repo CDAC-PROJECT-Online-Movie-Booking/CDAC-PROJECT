@@ -1,5 +1,6 @@
 package com.bookmymovie.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.exception.ResourceNotFoundException;
@@ -15,8 +16,10 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
-    private final PaymentRepository paymentRepo;
-    private final PaymentMethodRepository paymentMethodRepo;
+	@Autowired
+    private PaymentRepository paymentRepo;
+	@Autowired
+    private PaymentMethodRepository paymentMethodRepo;
 
     public Payment processPayment(Booking booking, String paymentMethodName) {
         PaymentMethod method = paymentMethodRepo.findByName(paymentMethodName)

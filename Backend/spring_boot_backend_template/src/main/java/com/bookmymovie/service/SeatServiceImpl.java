@@ -22,8 +22,10 @@ public class SeatServiceImpl implements SeatService{
 	
 	@Autowired
 	private ModelMapper modelMapper;
-    private final SeatRepository seatRepo;
-    private final ShowtimeRepository showtimeRepo;
+	@Autowired
+    private SeatRepository seatRepo;
+	@Autowired
+    private ShowtimeRepository showtimeRepo;
 
     public List<SeatResponse> getAvailableSeatsForShowtime(Long showtimeId)
     {

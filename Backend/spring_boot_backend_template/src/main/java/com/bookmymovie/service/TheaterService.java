@@ -2,6 +2,7 @@ package com.bookmymovie.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.exception.ResourceNotFoundException;
@@ -17,9 +18,12 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class TheaterService {
-    private final TheaterRepository theaterRepo;
-    private final CityRepository cityRepo;
-    private final ScreenRepository screenRepo;
+	@Autowired
+    private TheaterRepository theaterRepo;
+	@Autowired
+    private CityRepository cityRepo;
+	@Autowired
+    private ScreenRepository screenRepo;
 
     public Theater addTheater(Theater theater, Long cityId) {
         City city = cityRepo.findById(cityId)
