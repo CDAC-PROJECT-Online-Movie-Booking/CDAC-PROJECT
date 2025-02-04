@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.bookmymovie.dto.MovieResponse;
 import com.bookmymovie.model.Movie;
 import com.bookmymovie.service.MovieService;
 
@@ -19,23 +20,23 @@ public class MovieController {
 	 private final MovieService movieService;
 
 	    @GetMapping
-	    public ResponseEntity<List<Movie>> getAllMovies() {
+	    public ResponseEntity<List<MovieResponse>> getAllMovies() {
 	        return ResponseEntity.ok(movieService.getAllMovies());
 	    }
 
 	    @GetMapping("/{movieId}")
-	    public ResponseEntity<Movie> getMovie(@PathVariable Long movieId) {
+	    public ResponseEntity<MovieResponse> getMovie(@PathVariable Long movieId) {
 	        return ResponseEntity.ok(movieService.getMovieById(movieId));
 	    }
 
 	    @PostMapping
 //	    @PreAuthorize("hasRole('ADMIN')")
-	    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
+	    public ResponseEntity<?> addMovie(@RequestBody Movie movie) {
 	        return ResponseEntity.status(HttpStatus.CREATED).body(movieService.addMovie(movie));
 	    }
 
 	    @GetMapping("/search")
-	    public ResponseEntity<List<Movie>> searchMovies(@RequestParam String query) {
+	    public ResponseEntity<List<MovieResponse>> searchMovies(@RequestParam String query) {
 	        return ResponseEntity.ok(movieService.searchMovies(query));
 	        		
 	    }
