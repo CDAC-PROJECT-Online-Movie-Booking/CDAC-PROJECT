@@ -36,7 +36,7 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "showtime_id")
-    private ShowTime showtime;
+    private Showtime showtime;
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
     private List<BookingSeat> seats = new ArrayList<>();
