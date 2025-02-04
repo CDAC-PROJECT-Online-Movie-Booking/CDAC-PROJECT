@@ -5,10 +5,15 @@ import java.time.LocalTime;
 
 import org.springframework.stereotype.Service;
 
+import com.bookmymovie.exception.ResourceNotFoundException;
 import com.bookmymovie.model.Movie;
 import com.bookmymovie.model.Screen;
+import com.bookmymovie.model.SeatType;
 import com.bookmymovie.model.Showtime;
 import com.bookmymovie.model.ShowtimeSeatPrice;
+import com.bookmymovie.repository.MovieRepository;
+import com.bookmymovie.repository.ScreenRepository;
+import com.bookmymovie.repository.SeatTypeRepository;
 import com.bookmymovie.repository.ShowtimeRepository;
 import com.bookmymovie.repository.ShowtimeSeatPriceRepository;
 
@@ -21,6 +26,7 @@ public class ShowtimeService {
     private final ShowtimeSeatPriceRepository seatPriceRepo;
     private final MovieRepository movieRepo;
     private final ScreenRepository screenRepo;
+    private final SeatTypeRepository seatTypeRepo;
 
     public Showtime createShowtime(Long movieId, Long screenId, LocalTime startTime, LocalTime endTime, LocalDate date) {
         Movie movie = movieRepo.findById(movieId)
