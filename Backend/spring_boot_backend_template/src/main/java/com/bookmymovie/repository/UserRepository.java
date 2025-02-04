@@ -1,5 +1,5 @@
 package com.bookmymovie.repository;
 
-public class UserDao {
+public interface UserRepository {
 
 }
