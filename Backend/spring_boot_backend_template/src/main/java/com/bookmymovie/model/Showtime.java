@@ -19,7 +19,7 @@ import lombok.*;
 @ToString(exclude = {"screen" , "movie" , "bookings","seatPrices"})
 @Table(name = "showtimes")
 
-public class ShowTime {
+public class Showtime {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
