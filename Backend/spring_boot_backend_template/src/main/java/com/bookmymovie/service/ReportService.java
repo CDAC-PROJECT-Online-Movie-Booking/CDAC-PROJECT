@@ -4,6 +4,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.bookmymovie.repository.BookingRepository;
+import com.bookmymovie.repository.PaymentRepository;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
