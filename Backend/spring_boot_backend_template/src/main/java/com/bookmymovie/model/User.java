@@ -11,13 +11,15 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.NoArgsConstructor;
 import lombok.*;
 
+
+
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor        
 @Table(name = "users")
 @Getter
 @Setter
+@ToString(exclude = {"createdAt","bookings","password"})
 public class User {
 	
 	@Id
@@ -36,6 +38,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+    
+    @NotBlank
+    private boolean status;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -43,5 +48,5 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 
-
+    
 }
