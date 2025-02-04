@@ -32,10 +32,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse getUserById(Long userId) {
+    public User getUserById(Long userId) {
         User user= userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-    return modelMapper.map(user,UserResponse.class);
+    return user;
     }
 
     @Override

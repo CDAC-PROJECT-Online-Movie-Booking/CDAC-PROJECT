@@ -3,6 +3,7 @@ package com.bookmymovie.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.dto.ApiResponse;
@@ -23,11 +24,17 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ShowtimeService {
-    private final ShowtimeRepository showtimeRepo;
-    private final ShowtimeSeatPriceRepository seatPriceRepo;
-    private final MovieRepository movieRepo;
-    private final ScreenRepository screenRepo;
-    private final SeatTypeRepository seatTypeRepo;
+	
+	@Autowired
+    private ShowtimeRepository showtimeRepo;
+	@Autowired
+    private ShowtimeSeatPriceRepository seatPriceRepo;
+	@Autowired
+    private MovieRepository movieRepo;
+	@Autowired
+    private ScreenRepository screenRepo;
+	@Autowired
+    private SeatTypeRepository seatTypeRepo;
 
     public Showtime createShowtime(Long movieId, Long screenId, LocalTime startTime, LocalTime endTime, LocalDate date) {
         Movie movie = movieRepo.findById(movieId)

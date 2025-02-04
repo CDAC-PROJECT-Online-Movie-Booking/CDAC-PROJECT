@@ -2,6 +2,7 @@ package com.bookmymovie.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.exception.ResourceNotFoundException;
@@ -26,13 +27,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional
 public class BookingServiceImpl implements BookingService {
-    private final BookingRepository bookingRepo;
-    private final BookingSeatRepository bookSeatRepo;
-    private final ShowtimeRepository showtimeRepo;
-    private final SeatRepository seatRepo;
-    private final PaymentService paymentService;
-    private final UserService userService;
-    private final ShowtimeSeatPriceRepository showtimeSeatPriceRepository; 
+	
+	@Autowired
+    private BookingRepository bookingRepo;
+	@Autowired
+    private BookingSeatRepository bookSeatRepo;
+	@Autowired
+    private  ShowtimeRepository showtimeRepo;
+	@Autowired
+    private  SeatRepository seatRepo;
+	@Autowired
+    private  PaymentService paymentService;
+	@Autowired
+    private  UserService userService;
+	@Autowired
+    private  ShowtimeSeatPriceRepository showtimeSeatPriceRepository; 
 
     public Booking createBooking(Long userId, Long showtimeId, List<Long> seatIds, String paymentMethod) {
         User user = userService.getUserById(userId);
