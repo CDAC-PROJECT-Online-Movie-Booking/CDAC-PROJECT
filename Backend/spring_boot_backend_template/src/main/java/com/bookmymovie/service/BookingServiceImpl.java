@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.exception.ResourceNotFoundException;
+import com.bookmymovie.exception.SeatNotAvailableException;
 import com.bookmymovie.model.Booking;
 import com.bookmymovie.model.BookingStatus;
 import com.bookmymovie.model.Payment;
