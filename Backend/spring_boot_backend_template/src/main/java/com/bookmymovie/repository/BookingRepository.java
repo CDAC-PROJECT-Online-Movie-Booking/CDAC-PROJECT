@@ -17,4 +17,12 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     
     @Query("SELECT b FROM Booking b WHERE b.showtime = :showtime AND b.status <> 'CANCELLED'")
     List<Booking> findActiveBookingsForShowtime(@Param("showtime") Showtime showtime);
+    
+    @Query("SELECT m.title, SUM(b.totalAmount) " +
+            "FROM Booking b " +
+            "JOIN b.showtime s " +
+            "JOIN s.movie m " +
+            "WHERE b.status = 'CONFIRMED' " +
+            "GROUP BY m.title")
+     List<Object[]> getRevenueByMovie();
 }

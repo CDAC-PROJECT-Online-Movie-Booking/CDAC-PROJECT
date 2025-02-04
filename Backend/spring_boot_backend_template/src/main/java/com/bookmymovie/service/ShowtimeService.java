@@ -55,6 +55,8 @@ public class ShowtimeService {
         seatPrice.setSeatType(seatType);
         seatPrice.setPrice(price);
         seatPriceRepo.save(seatPrice);
-        return new ApiResponse("Seat price set ");
+
+        return new ApiResponse("Price set for showtime");
+
     }
 }

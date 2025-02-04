@@ -19,4 +19,5 @@ public interface ShowtimeSeatPriceRepository extends JpaRepository<ShowtimeSeatP
            "WHERE ssp.showtime = :showtime AND ssp.seatType = :seatType")
     Optional<ShowtimeSeatPrice> findByShowtimeAndSeatType(@Param("showtime") Showtime showtime,
                                                         @Param("seatType") SeatType seatType);
+    
 }
