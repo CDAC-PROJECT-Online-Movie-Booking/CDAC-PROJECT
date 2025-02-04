@@ -17,9 +17,9 @@ public class PaymentController {
     private final PaymentService paymentService;
 
     @PostMapping("/{paymentId}/refund")
-    //@PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> processRefund(@PathVariable Long paymentId) {
         paymentService.processRefund(paymentId);
         return ResponseEntity.noContent().build();
-    }
+    }
 }

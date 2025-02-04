@@ -46,6 +46,6 @@ public class ShowtimeController {
         @RequestParam Long seatTypeId,
         @RequestParam Double price
     ) {
-        return ResponseEntity.of(showtimeService.setSeatPriceForShowtime(showtimeId, seatTypeId, price));
+        return ResponseEntity.ok(showtimeService.setSeatPriceForShowtime(showtimeId, seatTypeId, price));
     }
 }
