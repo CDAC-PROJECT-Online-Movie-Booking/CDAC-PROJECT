@@ -10,4 +10,5 @@ public interface BookingService {
 
     Booking createBooking(Long userId, Long showtimeId, List<Long> seatIds, String paymentMethod) ;
     void validateSeatAvailability(List<Seat> seats, Showtime showtime);
+    double calculateTotalPrice(List<Seat> seats, Showtime showtime);
 }

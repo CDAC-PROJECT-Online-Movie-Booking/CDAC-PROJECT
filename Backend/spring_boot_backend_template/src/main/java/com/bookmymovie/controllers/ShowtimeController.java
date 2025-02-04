@@ -41,7 +41,7 @@ public class ShowtimeController {
 
     @PostMapping("/{showtimeId}/seat-prices")
 //    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ShowtimeSeatPrice> setSeatPrice(
+    public ResponseEntity<?> setSeatPrice(
         @PathVariable Long showtimeId,
         @RequestParam Long seatTypeId,
         @RequestParam Double price

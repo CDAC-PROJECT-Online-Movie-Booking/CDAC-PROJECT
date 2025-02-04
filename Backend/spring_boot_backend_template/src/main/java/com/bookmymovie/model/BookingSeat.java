@@ -13,6 +13,9 @@ import lombok.*;
 @Table(name = "booking_seats")
 @ToString(exclude = {"booking" ,"seat"})
 public class BookingSeat {
+	@EmbeddedId
+    private BookingSeatId id;
+	
     @Id
     @ManyToOne
     @JoinColumn(name = "booking_id")

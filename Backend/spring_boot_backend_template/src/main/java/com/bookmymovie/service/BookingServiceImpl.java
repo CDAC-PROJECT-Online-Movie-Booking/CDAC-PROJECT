@@ -10,12 +10,14 @@ import com.bookmymovie.model.Booking;
 import com.bookmymovie.model.BookingStatus;
 import com.bookmymovie.model.Payment;
 import com.bookmymovie.model.Seat;
+import com.bookmymovie.model.SeatType;
 import com.bookmymovie.model.Showtime;
 import com.bookmymovie.model.User;
 import com.bookmymovie.repository.BookingRepository;
 import com.bookmymovie.repository.BookingSeatRepository;
 import com.bookmymovie.repository.SeatRepository;
 import com.bookmymovie.repository.ShowtimeRepository;
+import com.bookmymovie.repository.ShowtimeSeatPriceRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +32,7 @@ public class BookingServiceImpl implements BookingService {
     private final SeatRepository seatRepo;
     private final PaymentService paymentService;
     private final UserService userService;
+    private final ShowtimeSeatPriceRepository showtimeSeatPriceRepository; 
 
     public Booking createBooking(Long userId, Long showtimeId, List<Long> seatIds, String paymentMethod) {
         User user = userService.getUserById(userId);
@@ -52,12 +55,25 @@ public class BookingServiceImpl implements BookingService {
         
         return bookingRepo.save(booking);
     }
+    
+    public double calculateTotalPrice(List<Seat> seats, Showtime showtime) {
+        return seats.stream()
+            .mapToDouble(seat -> {
+                SeatType seatType = seat.getSeatType();
+                return showtimeSeatPriceRepository.findByShowtimeAndSeatType(showtime, seatType)
+                    .orElseThrow(() -> new RuntimeException("Price not found for seat type"))
+                    .getPrice();
+            })
+            .sum();
+    }
 
-    public void validateSeatAvailability(List<Seat> seats, Showtime showtime) {
-        List<Seat> bookedSeats = bookSeatRepo.findBookedSeatsByShowtime(showtime);
-        if (seats.stream().anyMatch(bookedSeats::contains)) {
-            throw new SeatNotAvailableException("One or more seats are already booked");
-        }
-    }
+	
+	@Override
+	public void validateSeatAvailability(List<Seat> seats, Showtime showtime) {
+	    List<Seat> bookedSeats = bookSeatRepo.findBookedSeatsByShowtime(showtime);
+	    if (seats.stream().anyMatch(bookedSeats::contains)) {
+	        throw new SeatNotAvailableException("One or more seats are already booked");
+	    }
+	}
  
 }

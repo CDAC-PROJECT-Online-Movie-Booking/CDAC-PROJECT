@@ -1,6 +1,8 @@
 package com.bookmymovie.service;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,11 @@ public class ReportService {
     }
 
     public Map<String, Double> getRevenueByMovie() {
-        // Custom query to group revenue by movie
-        return bookingRepo.getRevenueByMovie();
+        List<Object[]> results = bookingRepo.getRevenueByMovie();
+        return results.stream()
+            .collect(Collectors.toMap(
+                arr -> (String) arr[0],
+                arr -> (Double) arr[1]
+            ));
     }
 }
