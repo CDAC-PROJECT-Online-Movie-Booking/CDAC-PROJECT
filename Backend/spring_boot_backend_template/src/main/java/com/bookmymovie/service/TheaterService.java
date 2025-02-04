@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.bookmymovie.exception.ResourceNotFoundException;
 import com.bookmymovie.model.City;
 import com.bookmymovie.model.Screen;
 import com.bookmymovie.model.Theater;
@@ -35,8 +36,8 @@ public class TheaterService {
     }
 
     public List<Theater> getTheatersByCity(Long cityId) {
-        City city = cityRepo.findById(cityId)
-                .orElseThrow(() -> new ResourceNotFoundException("City not found"));
+        City city = cityRepo.findById(cityId).orElseThrow(() -> new ResourceNotFoundException("City not found"));
         return theaterRepo.findByCity(city);
-    }
+        
+    }
 }
