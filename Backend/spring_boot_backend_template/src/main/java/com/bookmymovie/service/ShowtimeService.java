@@ -5,6 +5,7 @@ import java.time.LocalTime;
 
 import org.springframework.stereotype.Service;
 
+import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
 import com.bookmymovie.model.Movie;
 import com.bookmymovie.model.Screen;
@@ -43,7 +44,7 @@ public class ShowtimeService {
         return showtimeRepo.save(showtime);
     }
 
-    public void setSeatPriceForShowtime(Long showtimeId, Long seatTypeId, Double price) {
+    public ApiResponse setSeatPriceForShowtime(Long showtimeId, Long seatTypeId, Double price) {
         Showtime showtime = showtimeRepo.findById(showtimeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Showtime not found"));
         SeatType seatType = seatTypeRepo.findById(seatTypeId)
@@ -54,5 +55,6 @@ public class ShowtimeService {
         seatPrice.setSeatType(seatType);
         seatPrice.setPrice(price);
         seatPriceRepo.save(seatPrice);
+        return new ApiResponse("Seat price set ");
     }
 }
