@@ -3,9 +3,11 @@ package com.bookmymovie.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bookmymovie.dto.UserResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
 import com.bookmymovie.exception.SeatNotAvailableException;
 import com.bookmymovie.model.Booking;
@@ -30,6 +32,8 @@ import lombok.RequiredArgsConstructor;
 public class BookingServiceImpl implements BookingService {
 	
 	@Autowired
+	private ModelMapper modelMapper;
+	@Autowired
     private BookingRepository bookingRepo;
 	@Autowired
     private BookingSeatRepository bookSeatRepo;
@@ -45,7 +49,7 @@ public class BookingServiceImpl implements BookingService {
     private  ShowtimeSeatPriceRepository showtimeSeatPriceRepository; 
 
     public Booking createBooking(Long userId, Long showtimeId, List<Long> seatIds, String paymentMethod) {
-        User user = userService.getUserById(userId);
+        UserResponse user = userService.getUserById(userId);
         Showtime showtime = showtimeRepo.findById(showtimeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Showtime not found"));
         
@@ -54,7 +58,9 @@ public class BookingServiceImpl implements BookingService {
         
         double totalAmount = calculateTotalPrice(seats, showtime);
         Booking booking = new Booking();
-        booking.setUser(user);
+        
+        /*if this service does not work then use modelMapper in controller to resolve*/
+        booking.setUser(modelMapper.map(user, User.class));
         booking.setShowtime(showtime);
         booking.setTotalAmount(totalAmount);
         booking.setStatus(BookingStatus.PENDING);

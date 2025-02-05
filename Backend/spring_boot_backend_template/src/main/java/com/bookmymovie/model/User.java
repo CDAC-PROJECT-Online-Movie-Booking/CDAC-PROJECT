@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -38,11 +39,11 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.USER;
     
     
     @Column(name = "status", nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")
-    private boolean status;
+    private boolean status=true;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
