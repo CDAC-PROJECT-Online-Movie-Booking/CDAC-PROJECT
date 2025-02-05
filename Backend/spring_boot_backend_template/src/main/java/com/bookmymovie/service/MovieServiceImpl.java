@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.MovieRequest;
@@ -16,6 +17,12 @@ import com.bookmymovie.exception.ResourceNotFoundException;
 import com.bookmymovie.model.Movie;
 import com.bookmymovie.repository.MovieRepository;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
 public class MovieServiceImpl implements MovieService{
 
 	@Autowired

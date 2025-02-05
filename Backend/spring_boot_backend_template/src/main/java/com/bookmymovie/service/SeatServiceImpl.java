@@ -14,10 +14,12 @@ import com.bookmymovie.model.Showtime;
 import com.bookmymovie.repository.SeatRepository;
 import com.bookmymovie.repository.ShowtimeRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class SeatServiceImpl implements SeatService{
 	
 	@Autowired

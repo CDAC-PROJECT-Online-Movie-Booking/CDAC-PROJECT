@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import com.bookmymovie.repository.BookingRepository;
 import com.bookmymovie.repository.PaymentRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ReportService {
 	
 	@Autowired

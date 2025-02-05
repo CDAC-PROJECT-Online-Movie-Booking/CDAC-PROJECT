@@ -11,10 +11,12 @@ import com.bookmymovie.model.PaymentStatus;
 import com.bookmymovie.repository.PaymentMethodRepository;
 import com.bookmymovie.repository.PaymentRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class PaymentServiceImpl implements PaymentService {
 	@Autowired
     private PaymentRepository paymentRepo;
