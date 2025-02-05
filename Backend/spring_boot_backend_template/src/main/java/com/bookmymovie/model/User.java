@@ -41,8 +41,8 @@ public class User {
     private Role role;
     
     
-    @Column(name = "status", nullable = false)
-    private boolean status=true;
+    @Column(name = "status", nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private boolean status;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
