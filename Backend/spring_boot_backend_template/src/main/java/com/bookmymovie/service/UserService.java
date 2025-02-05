@@ -8,10 +8,12 @@ import com.bookmymovie.dto.UserResponse;
 import com.bookmymovie.model.User;
 
 public interface UserService {
+	
+	public ApiResponse registerUser(UserRequest newUser);
 
 	List<UserResponse> getAllUsers();
 	
-	User getUserById(Long userId);
+	UserResponse getUserById(Long userId);
 
 	ApiResponse updateUser(Long userId, UserRequest updatedUser);
 	

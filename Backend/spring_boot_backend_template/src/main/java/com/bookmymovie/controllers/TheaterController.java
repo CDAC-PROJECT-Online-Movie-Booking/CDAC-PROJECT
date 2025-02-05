@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.model.Screen;
 import com.bookmymovie.model.Theater;
-import com.bookmymovie.service.TheaterService;
+import com.bookmymovie.service.TheaterServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/theaters")
 @RequiredArgsConstructor
 public class TheaterController {
-    private final TheaterService theaterService;
+    private final TheaterServiceImpl theaterService;
 
     @PostMapping
 //    @PreAuthorize("hasRole('ADMIN')")
