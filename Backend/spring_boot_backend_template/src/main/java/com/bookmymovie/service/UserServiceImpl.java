@@ -28,15 +28,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
 	private ModelMapper modelMapper;
     
-    
-    
+    @Override
     public ApiResponse registerUser(UserRequest newUser)
     {
     	User user = modelMapper.map(newUser, User.class);
     	
     	userRepository.save(user);
-    	return new ApiResponse("user registered successfully");
+    	return new ApiResponse("User registered successfully");
     }
+    
     @Override
     public List<UserResponse> getAllUsers() {
    
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     public ApiResponse updateUser(Long userId, UserRequest updatedUser) {
 
     
-		String mesg="Id not exist";
+		String mesg="Id does not exist";
 		
 			User user=userRepository.findById(userId)
 					.orElseThrow(()->new ResourceNotFoundException("Invalid id"));
@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
     	String msg = "Invalid user Id";
     	if (userRepository.existsById(userId)) {
     		userRepository.deleteById(userId);
-    		msg="user deleted successfully";
+    		msg="User deleted successfully";
     		return new ApiResponse(msg);
     	}
     	return new ApiResponse(msg);
