@@ -14,7 +14,12 @@ import com.bookmymovie.exception.ResourceNotFoundException;
 import com.bookmymovie.model.User;
 import com.bookmymovie.repository.UserRepository;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired

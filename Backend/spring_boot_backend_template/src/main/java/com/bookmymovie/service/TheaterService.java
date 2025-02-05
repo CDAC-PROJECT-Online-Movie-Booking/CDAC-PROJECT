@@ -13,10 +13,12 @@ import com.bookmymovie.repository.CityRepository;
 import com.bookmymovie.repository.ScreenRepository;
 import com.bookmymovie.repository.TheaterRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class TheaterService {
 	@Autowired
     private TheaterRepository theaterRepo;

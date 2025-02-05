@@ -19,10 +19,12 @@ import com.bookmymovie.repository.SeatTypeRepository;
 import com.bookmymovie.repository.ShowtimeRepository;
 import com.bookmymovie.repository.ShowtimeSeatPriceRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ShowtimeService {
 	
 	@Autowired

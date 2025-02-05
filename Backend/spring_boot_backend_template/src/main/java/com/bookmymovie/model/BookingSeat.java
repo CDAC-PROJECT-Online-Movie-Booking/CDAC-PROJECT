@@ -16,13 +16,13 @@ public class BookingSeat {
 	@EmbeddedId
     private BookingSeatId id;
 	
-    @Id
-    @ManyToOne
+    @MapsId("bookingId")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
-    @Id
-    @ManyToOne
+    @MapsId("seatId")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seat_id")
     private Seat seat;
 
