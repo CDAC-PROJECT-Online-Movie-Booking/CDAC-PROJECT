@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.NoArgsConstructor;
 import lombok.*;
+import lombok.Builder.Default;
 
 
 
@@ -39,8 +40,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
     
-    @NotBlank
-    private boolean status;
+    
+    @Column(name = "status", nullable = false)
+    private boolean status=true;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
