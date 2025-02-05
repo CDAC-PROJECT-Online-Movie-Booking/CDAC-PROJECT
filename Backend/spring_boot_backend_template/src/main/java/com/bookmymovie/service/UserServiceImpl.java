@@ -63,22 +63,18 @@ public class UserServiceImpl implements UserService {
 					.orElseThrow(()->new ResourceNotFoundException("Invalid id"));
 		modelMapper.map(updatedUser, user);
 		
-		mesg="category updated";
+		mesg="User details updated successfully";
 		return new ApiResponse(mesg);
     }
 
     @Override
     public ApiResponse deleteUser(Long userId) {
-   
     	String msg = "Invalid user Id";
-
-		if (userRepository.existsById(userId)) {
-			User user = userRepository.findById(userId)
-					.orElseThrow(() -> new ResourceNotFoundException("Invalid user ID!!!"));
-		//	user.setStatus(false);
-			msg = "user deleted successfully";
-			
-		}
-		return new ApiResponse(msg);
+    	if (userRepository.existsById(userId)) {
+    		userRepository.deleteById(userId);
+    		msg="user deleted successfully";
+    		return new ApiResponse(msg);
+    	}
+    	return new ApiResponse(msg);
     }
 }
