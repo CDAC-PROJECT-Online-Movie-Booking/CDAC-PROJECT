@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    
+  
     @Autowired
     private ModelMapper modelMapper;
 
