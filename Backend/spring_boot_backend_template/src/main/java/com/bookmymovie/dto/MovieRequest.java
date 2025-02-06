@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MovieRequest {
 	
-	
 	    private String title;
 	    private String description;
 	    private String genre;
@@ -19,6 +18,4 @@ public class MovieRequest {
 	    private LocalDate releaseDate;
 	    private String language;
 	    
-	 
-	
 }

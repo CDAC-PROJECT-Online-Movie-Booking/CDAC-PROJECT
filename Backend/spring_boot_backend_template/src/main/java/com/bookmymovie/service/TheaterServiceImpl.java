@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.TheaterRequest;
 import com.bookmymovie.dto.TheaterResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
@@ -32,12 +33,14 @@ public class TheaterServiceImpl implements TheaterService {
 	@Autowired
 	private ModelMapper modelMapper; 
 
-    public Theater addTheater(TheaterRequest newTheater, Long cityId) {
+    public ApiResponse addTheater(TheaterRequest newTheater, Long cityId) {
         City city = cityRepo.findById(cityId)
                 .orElseThrow(() -> new ResourceNotFoundException("City not found"));
         Theater theater = modelMapper.map(newTheater,Theater.class);
         theater.setCity(city);
-        return theaterRepo.save(theater);
+        theaterRepo.save(theater);
+        
+        return new ApiResponse("Theater Added SuccessFully!!!");
     }
 
     public Screen addScreenToTheater(Long theaterId, Screen screen) {
