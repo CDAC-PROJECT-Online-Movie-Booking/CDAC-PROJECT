@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ public class TheaterController {
     private final TheaterServiceImpl theaterService;
 
     @PostMapping
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Theater> addTheater(@RequestBody Theater theater, @RequestParam Long cityId) {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(theaterService.addTheater(theater, cityId));
@@ -37,7 +38,7 @@ public class TheaterController {
     }
 
     @PostMapping("/{theaterId}/screens")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Screen> addScreen(@PathVariable Long theaterId, @RequestBody Screen screen) {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(theaterService.addScreenToTheater(theaterId, screen));

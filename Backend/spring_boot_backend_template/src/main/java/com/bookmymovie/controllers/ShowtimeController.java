@@ -2,6 +2,7 @@ package com.bookmymovie.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,7 @@ public class ShowtimeController {
     private final ShowtimeService showtimeService;
 
     @PostMapping
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Showtime> createShowtime(
         @RequestParam Long movieId,
         @RequestParam Long screenId,
@@ -40,7 +41,7 @@ public class ShowtimeController {
     }
 
     @PostMapping("/{showtimeId}/seat-prices")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> setSeatPrice(
         @PathVariable Long showtimeId,
         @RequestParam Long seatTypeId,

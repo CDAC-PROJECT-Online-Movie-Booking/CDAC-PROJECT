@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,7 @@ public class BookingController {
     @PostMapping
     public ResponseEntity<Booking> createBooking(
         @RequestBody BookingRequest request,
-       /* @AuthenticationPrincipal*/ User user
+        @AuthenticationPrincipal User user
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(bookingService.createBooking(
@@ -42,7 +43,7 @@ public class BookingController {
     }
 
     @GetMapping("/user")
-    public ResponseEntity<List<Booking>> getUserBookings(/* @AuthenticationPrincipal*/ User user) {
+    public ResponseEntity<List<Booking>> getUserBookings( @AuthenticationPrincipal User user) {
         return ResponseEntity.ok(bookingService.getBookingsByUser(user));
     }
 

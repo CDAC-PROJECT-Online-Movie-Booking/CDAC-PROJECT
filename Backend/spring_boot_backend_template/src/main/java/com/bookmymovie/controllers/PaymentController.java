@@ -1,6 +1,7 @@
 package com.bookmymovie.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ public class PaymentController {
     private final PaymentService paymentService;
 
     @PostMapping("/{paymentId}/refund")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> processRefund(@PathVariable Long paymentId) {
         paymentService.processRefund(paymentId);
         return ResponseEntity.noContent().build();
