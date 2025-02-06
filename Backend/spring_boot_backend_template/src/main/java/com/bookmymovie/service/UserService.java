@@ -9,7 +9,7 @@ import com.bookmymovie.model.User;
 
 public interface UserService {
 	
-	public ApiResponse registerUser(UserRequest newUser);
+	public ApiResponse registerUser(UserRequest user);
 
 	List<UserResponse> getAllUsers();
 	

@@ -24,19 +24,6 @@ public class UserController {
     }
 
     
-    @PostMapping
-    public ResponseEntity<?> registerUser(@RequestBody UserRequest userRequest)
-    {
-    	
-    	try
-    	{
-    		return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(userRequest));
-    	}catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(e.getMessage()));
-		}
-    	
-    }
-    
     @GetMapping("/{userId}")
     public ResponseEntity<?> getUser(@PathVariable Long userId) {
         try {

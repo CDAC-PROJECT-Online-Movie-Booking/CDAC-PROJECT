@@ -1,4 +1,7 @@
-package com.bookmymovie.config;
+package com.bookmymovie.exception;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,21 +12,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.bookmymovie.exception.ResourceNotFoundException;
-import com.bookmymovie.exception.ErrorResponse;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-  
-    @Autowired
+	@Autowired
     private ModelMapper modelMapper;
-
-    public GlobalExceptionHandler(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {

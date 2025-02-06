@@ -39,7 +39,7 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role = Role.USER;
+    private Role role;
     
     
     @Column(name = "status", nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")

@@ -6,6 +6,8 @@ import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class MovieBookingApplication {
@@ -25,6 +27,7 @@ public class MovieBookingApplication {
 		return modelMapper;
 
 	}
+		
 
 
 }
