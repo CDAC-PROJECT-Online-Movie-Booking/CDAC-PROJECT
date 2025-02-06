@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	public ApiResponse registerUser(UserRequest newUser) {
     	User user = modelMapper.map(newUser,User.class);
     	user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(Role.USER);
+        user.setRole(Role.ADMIN);
         userRepository.save(user);
         return new ApiResponse("user registered!!!");
 	}

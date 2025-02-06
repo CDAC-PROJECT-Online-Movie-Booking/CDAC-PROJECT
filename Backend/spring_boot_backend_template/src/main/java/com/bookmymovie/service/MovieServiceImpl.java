@@ -32,7 +32,8 @@ public class MovieServiceImpl implements MovieService{
 	private ModelMapper modelMapper;
 	
 	@Override
-	public ApiResponse addMovie(Movie movie) {
+	public ApiResponse addMovie(MovieRequest newMovie) {
+		Movie movie = modelMapper.map(newMovie, Movie.class);
 		movieRepo.save(movie);
 		return new ApiResponse("Movie Added successfully");
 	}
