@@ -12,7 +12,7 @@ public class ApiResponse {
 	 private String message;
 	 public ApiResponse(String message) {
 		super();
-		this.timeStamp = timeStamp;
+		this.timeStamp = LocalDateTime.now();
 		this.message = message;
 	}
 	 

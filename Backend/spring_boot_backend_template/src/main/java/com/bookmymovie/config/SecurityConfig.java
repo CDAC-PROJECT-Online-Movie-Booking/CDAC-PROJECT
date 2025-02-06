@@ -37,10 +37,12 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                	"/**",
-                    "/api/auth/**",
-                    "/swagger-ui/**",
-                    "/v3/api-docs/**"
+                		"/api/auth/**",
+                	    "/swagger-ui/**",
+                	    "/v3/api-docs/**",
+                	    "/api-docs/**",  
+                	    "/swagger-ui.html",
+                	    "/webjars/**"
                 ).permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
