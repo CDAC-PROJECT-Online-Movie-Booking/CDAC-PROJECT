@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.dto.TheaterRequest;
+import com.bookmymovie.dto.TheaterResponse;
 import com.bookmymovie.model.Screen;
 import com.bookmymovie.model.Theater;
 import com.bookmymovie.service.TheaterServiceImpl;
@@ -28,7 +29,7 @@ public class TheaterController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Theater> addTheater(@RequestBody TheaterRequest newTheater, @RequestParam Long cityId) {
+    public ResponseEntity<?> addTheater(@RequestBody TheaterRequest newTheater, @RequestParam Long cityId) {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(theaterService.addTheater(newTheater, cityId));
     }
