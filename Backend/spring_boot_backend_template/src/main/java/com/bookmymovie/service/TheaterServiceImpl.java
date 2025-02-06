@@ -2,9 +2,12 @@ package com.bookmymovie.service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bookmymovie.dto.TheaterRequest;
+import com.bookmymovie.dto.TheaterResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
 import com.bookmymovie.model.City;
 import com.bookmymovie.model.Screen;
@@ -26,10 +29,13 @@ public class TheaterServiceImpl implements TheaterService {
     private CityRepository cityRepo;
 	@Autowired
     private ScreenRepository screenRepo;
+	@Autowired
+	private ModelMapper modelMapper; 
 
-    public Theater addTheater(Theater theater, Long cityId) {
+    public Theater addTheater(TheaterRequest newTheater, Long cityId) {
         City city = cityRepo.findById(cityId)
                 .orElseThrow(() -> new ResourceNotFoundException("City not found"));
+        Theater theater = modelMapper.map(newTheater,Theater.class);
         theater.setCity(city);
         return theaterRepo.save(theater);
     }
