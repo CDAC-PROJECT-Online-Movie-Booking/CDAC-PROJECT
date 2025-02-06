@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.LoginRequest;
+import com.bookmymovie.dto.UserRequest;
 import com.bookmymovie.model.User;
 import com.bookmymovie.service.AuthService;
 import com.bookmymovie.service.UserService;
@@ -28,7 +30,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
+    public ResponseEntity<ApiResponse> register(@RequestBody UserRequest user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(user));
     }
 }

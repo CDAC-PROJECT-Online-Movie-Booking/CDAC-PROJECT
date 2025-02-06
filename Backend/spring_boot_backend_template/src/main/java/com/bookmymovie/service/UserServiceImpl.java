@@ -5,12 +5,14 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.UserRequest;
 import com.bookmymovie.dto.UserResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
+import com.bookmymovie.model.Role;
 import com.bookmymovie.model.User;
 import com.bookmymovie.repository.UserRepository;
 
@@ -24,18 +26,21 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Autowired
 	private ModelMapper modelMapper;
     
     @Override
-    public ApiResponse registerUser(UserRequest newUser)
-    {
-    	User user = modelMapper.map(newUser, User.class);
-    	
-    	userRepository.save(user);
-    	return new ApiResponse("User registered successfully");
-    }
+	public ApiResponse registerUser(UserRequest newUser) {
+    	User user = modelMapper.map(newUser,User.class);
+    	user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(Role.USER);
+        userRepository.save(user);
+        return new ApiResponse("user registered!!!");
+	}
     
     @Override
     public List<UserResponse> getAllUsers() {
@@ -77,4 +82,6 @@ public class UserServiceImpl implements UserService {
     	}
     	return new ApiResponse(msg);
     }
+
+	
 }
