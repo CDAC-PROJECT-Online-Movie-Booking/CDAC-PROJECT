@@ -19,7 +19,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.beans.factory.annotation.Autowired;
 import lombok.RequiredArgsConstructor;
 
-import com.bookmymovie.security.JwtAuthenticationFilter;
+import jakarta.servlet.Filter;
 
 @Configuration
 @EnableWebSecurity
@@ -51,7 +51,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .authenticationProvider(authenticationProvider)
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore((Filter) jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
