@@ -19,10 +19,6 @@ public class MovieRequest {
 	    private LocalDate releaseDate;
 	    private String language;
 	    
-	    
-	    
-	    
-	
-
+	 
 	
 }

@@ -1,8 +1,7 @@
 package com.bookmymovie.exception;
 
-public class SeatNotAvailableException extends RuntimeException{
-	public SeatNotAvailableException(String message) {
+public class SeatNotAvailableException extends RuntimeException {
+    public SeatNotAvailableException(String message) {
         super(message);
-    }
-	
+        }
 }
