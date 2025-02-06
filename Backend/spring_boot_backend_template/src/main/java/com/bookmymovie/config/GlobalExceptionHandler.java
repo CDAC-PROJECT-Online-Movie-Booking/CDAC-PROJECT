@@ -5,19 +5,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.bookmymovie.exception.ResourceNotFoundException;
+import com.bookmymovie.exception.ErrorResponse;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-	@Autowired
+    
+    @Autowired
     private ModelMapper modelMapper;
 
     public GlobalExceptionHandler(ModelMapper modelMapper) {
