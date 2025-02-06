@@ -25,6 +25,7 @@ public class UserController {
 
     
     @GetMapping("/{userId}")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> getUser(@PathVariable Long userId) {
         try {
             return ResponseEntity.ok(userService.getUserById(userId));

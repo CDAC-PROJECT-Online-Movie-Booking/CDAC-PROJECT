@@ -10,7 +10,7 @@ import com.bookmymovie.model.Movie;
 public interface MovieService {
 	
 	
-	public ApiResponse addMovie(Movie movie);
+	public ApiResponse addMovie(MovieRequest movie);
 	public ApiResponse updateMovie(Long movieId , MovieRequest updatedMovie);
 	public ApiResponse deleteMovie(Long movieId);
 	public List<MovieResponse> getAllMovies();

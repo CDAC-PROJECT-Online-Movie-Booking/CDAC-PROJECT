@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import com.bookmymovie.dto.MovieRequest;
 import com.bookmymovie.dto.MovieResponse;
 import com.bookmymovie.model.Movie;
 import com.bookmymovie.service.MovieService;
@@ -32,7 +33,7 @@ public class MovieController {
 
 	    @PostMapping
 	    @PreAuthorize("hasRole('ADMIN')")
-	    public ResponseEntity<?> addMovie(@RequestBody Movie movie) {
+	    public ResponseEntity<?> addMovie(@RequestBody MovieRequest movie) {
 	        return ResponseEntity.status(HttpStatus.CREATED).body(movieService.addMovie(movie));
 	    }
 
