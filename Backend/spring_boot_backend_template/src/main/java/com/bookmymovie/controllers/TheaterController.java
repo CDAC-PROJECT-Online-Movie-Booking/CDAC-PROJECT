@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmymovie.dto.ScreenRequest;
 import com.bookmymovie.dto.TheaterRequest;
 import com.bookmymovie.dto.TheaterResponse;
 import com.bookmymovie.model.Screen;
@@ -41,8 +42,8 @@ public class TheaterController {
 
     @PostMapping("/{theaterId}/screens")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Screen> addScreen(@PathVariable Long theaterId, @RequestBody Screen screen) {
+    public ResponseEntity<?> addScreen(@PathVariable Long theaterId, @RequestBody ScreenRequest newScreen) {
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body(theaterService.addScreenToTheater(theaterId, screen));
+            .body(theaterService.addScreenToTheater(theaterId, newScreen));
     }
 }

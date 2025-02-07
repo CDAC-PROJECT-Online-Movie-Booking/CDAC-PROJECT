@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.LoginRequest;
 import com.bookmymovie.dto.UserRequest;
-import com.bookmymovie.model.User;
 import com.bookmymovie.service.AuthService;
 import com.bookmymovie.service.UserService;
 
