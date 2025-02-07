@@ -13,6 +13,6 @@ public interface TheaterService {
 	public ApiResponse addTheater(TheaterRequest theater, Long cityId);
 
 	public ApiResponse addScreenToTheater(Long theaterId, ScreenRequest newScreen);
-	public List<Theater> getTheatersByCity(Long cityId);
+	public List<TheaterResponse> getTheatersByCity(Long cityId);
 
 }
