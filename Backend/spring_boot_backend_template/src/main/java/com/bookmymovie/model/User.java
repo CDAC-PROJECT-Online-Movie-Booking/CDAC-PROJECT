@@ -39,7 +39,8 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    @Column(nullable = false)
+    private Role role = Role.USER;
     
     
     @Column(name = "status", nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")
@@ -51,5 +52,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 
+    private String otp;
+    
+    private boolean isVerified;
     
 }
