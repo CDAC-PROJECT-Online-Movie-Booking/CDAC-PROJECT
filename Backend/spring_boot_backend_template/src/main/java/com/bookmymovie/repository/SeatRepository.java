@@ -14,9 +14,11 @@ import com.bookmymovie.model.Showtime;
 public interface SeatRepository extends JpaRepository<Seat, Long> {
     List<Seat> findByScreen(Screen screen);
     
-    @Query("SELECT s FROM Seat s WHERE s.screen = :screen AND s.seatId NOT IN " +
-           "(SELECT bs.seat.seatId FROM BookingSeat bs WHERE bs.booking.showtime = :showtime)")
-    List<Seat> findAvailableSeatsByShowtime(@Param("screen") Screen screen, 
-                                          @Param("showtime") Showtime showtime);
+   
+    
+    @Query("SELECT s FROM Seat s LEFT JOIN BookingSeat bs ON s.seatId = bs.seat.seatId AND bs.booking.showtime = :showtime " +
+    	       "WHERE s.screen = :screen AND bs.seat IS NULL")
+    	List<Seat> findAvailableSeatsByShowtime(@Param("screen") Screen screen, @Param("showtime") Showtime showtime);
+
 }
 

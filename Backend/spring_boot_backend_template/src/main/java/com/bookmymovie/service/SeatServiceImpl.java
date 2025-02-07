@@ -35,8 +35,10 @@ public class SeatServiceImpl implements SeatService{
                 .orElseThrow(() -> new ResourceNotFoundException("Showtime not found"));
         List <Seat> seatList= seatRepo.findAvailableSeatsByShowtime(showtime.getScreen(), showtime);
         
-        return seatList.stream().map(seat -> modelMapper.map(seatList, SeatResponse.class)).collect(Collectors.toList());
+        return seatList.stream().map(seat -> modelMapper.map(seat, SeatResponse.class)).collect(Collectors.toList());
     }
     
+    
+  
     
 }
