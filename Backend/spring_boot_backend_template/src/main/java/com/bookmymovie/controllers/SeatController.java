@@ -18,7 +18,10 @@ public class SeatController {
     private final SeatService seatService;
 
     @GetMapping("/available")
-    public ResponseEntity<List<SeatResponse>> getAvailableSeats(@RequestParam Long showtimeId) {
+    public ResponseEntity<List<SeatResponse>> getAvailableSeats(@RequestParam(required = true) Long showtimeId) {
+        if (showtimeId == null || showtimeId <= 0) {
+            return ResponseEntity.badRequest().build();
+        }
         return ResponseEntity.ok(seatService.getAvailableSeatsForShowtime(showtimeId));
     }
 }
