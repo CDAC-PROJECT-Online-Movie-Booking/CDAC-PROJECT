@@ -25,20 +25,19 @@ public class ShowtimeController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Showtime> createShowtime(
+    public ResponseEntity<?> createShowtime(
         @RequestParam Long movieId,
         @RequestParam Long screenId,
-        @RequestBody ShowtimeRequest request
+        @RequestBody ShowtimeRequest newShowtime
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(showtimeService.createShowtime(
                 movieId, 
                 screenId, 
-                request.getStartTime(), 
-                request.getEndTime(), 
-                request.getDate()
+                newShowtime
             ));
     }
+
 
     @PostMapping("/{showtimeId}/seat-prices")
     @PreAuthorize("hasRole('ADMIN')")

@@ -1,12 +1,12 @@
 package com.bookmymovie.service;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.dto.ApiResponse;
+import com.bookmymovie.dto.ShowtimeRequest;
 import com.bookmymovie.exception.ResourceNotFoundException;
 import com.bookmymovie.model.Movie;
 import com.bookmymovie.model.Screen;
@@ -37,20 +37,21 @@ public class ShowtimeService {
     private ScreenRepository screenRepo;
 	@Autowired
     private SeatTypeRepository seatTypeRepo;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
-    public Showtime createShowtime(Long movieId, Long screenId, LocalTime startTime, LocalTime endTime, LocalDate date) {
+    public ApiResponse createShowtime(Long movieId, Long screenId, ShowtimeRequest newShowtime) {
         Movie movie = movieRepo.findById(movieId)
                 .orElseThrow(() -> new ResourceNotFoundException("Movie not found"));
         Screen screen = screenRepo.findById(screenId)
                 .orElseThrow(() -> new ResourceNotFoundException("Screen not found"));
         
-        Showtime showtime = new Showtime();
+        Showtime showtime = modelMapper.map(newShowtime, Showtime.class);
         showtime.setMovie(movie);
         showtime.setScreen(screen);
-        showtime.setStartTime(startTime);
-        showtime.setEndTime(endTime);
-        showtime.setDate(date);
-        return showtimeRepo.save(showtime);
+        showtimeRepo.save(showtime);
+        return new ApiResponse("New ShowTime Added for Movieid-"+movie.getMovieId()+" for Screenid-"+screen.getScreenId());
     }
 
     public ApiResponse setSeatPriceForShowtime(Long showtimeId, Long seatTypeId, Double price) {
