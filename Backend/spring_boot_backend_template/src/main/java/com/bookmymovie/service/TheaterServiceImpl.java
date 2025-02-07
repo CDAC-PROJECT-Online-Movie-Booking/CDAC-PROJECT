@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.dto.ApiResponse;
+import com.bookmymovie.dto.ScreenRequest;
 import com.bookmymovie.dto.TheaterRequest;
 import com.bookmymovie.dto.TheaterResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
@@ -44,11 +45,13 @@ public class TheaterServiceImpl implements TheaterService {
         return new ApiResponse("Theater Added SuccessFully!!!");
     }
 
-    public Screen addScreenToTheater(Long theaterId, Screen screen) {
+    public ApiResponse addScreenToTheater(Long theaterId, ScreenRequest newScreen) {
         Theater theater = theaterRepo.findById(theaterId)
                 .orElseThrow(() -> new ResourceNotFoundException("Theater not found"));
+        Screen screen = modelMapper.map(newScreen, Screen.class);
         screen.setTheater(theater);
-        return screenRepo.save(screen);
+        screenRepo.save(screen);
+        return new ApiResponse("New Screen Added To Theater with ScreenId - "+screen.getScreenId());
     }
 
     public List<TheaterResponse> getTheatersByCity(Long cityId) {
