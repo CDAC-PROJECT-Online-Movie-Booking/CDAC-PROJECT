@@ -1,6 +1,7 @@
 package com.bookmymovie.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,9 +54,10 @@ public class TheaterServiceImpl implements TheaterService {
         return new ApiResponse("New Screen Added To Theater with ScreenId - "+screen.getScreenId());
     }
 
-    public List<Theater> getTheatersByCity(Long cityId) {
+    public List<TheaterResponse> getTheatersByCity(Long cityId) {
         City city = cityRepo.findById(cityId).orElseThrow(() -> new ResourceNotFoundException("City not found"));
-        return theaterRepo.findByCity(city);
+        List<Theater> theater = theaterRepo.findByCity(city);
+        return theater.stream().map(t -> modelMapper.map(t, TheaterResponse.class)).collect(Collectors.toList());
         
     }
 }

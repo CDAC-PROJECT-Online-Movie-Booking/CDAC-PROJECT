@@ -36,7 +36,7 @@ public class TheaterController {
     }
 
     @GetMapping("/by-city")
-    public ResponseEntity<List<Theater>> getTheatersByCity(@RequestParam Long cityId) {
+    public ResponseEntity<List<TheaterResponse>> getTheatersByCity(@RequestParam Long cityId) {
         return ResponseEntity.ok(theaterService.getTheatersByCity(cityId));
     }
 
