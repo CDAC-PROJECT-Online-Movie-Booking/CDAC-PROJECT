@@ -1,6 +1,8 @@
 package com.bookmymovie.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -9,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.dto.ApiResponse;
+import com.bookmymovie.dto.OtpVerificationRequest;
 import com.bookmymovie.dto.UserRequest;
 import com.bookmymovie.dto.UserResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
@@ -33,14 +36,27 @@ public class UserServiceImpl implements UserService {
     @Autowired
 	private ModelMapper modelMapper;
     
+    @Autowired
+    private final EmailService emailService; 
+    
     @Override
-	public ApiResponse registerUser(UserRequest newUser) {
-    	User user = modelMapper.map(newUser,User.class);
-    	user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(Role.USER);
+    public ApiResponse registerUser(UserRequest request) {
+        if (userRepository.existsByEmail(request.getEmail())) {
+            return new ApiResponse("Email already exists.");
+        }
+
+        User user = new User();
+        user.setName(request.getName());
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setOtp(generateOtp());
+        user.setVerified(false);
+
         userRepository.save(user);
-        return new ApiResponse("user registered!!!");
-	}
+        emailService.sendOtpEmail(user.getEmail(), user.getOtp(), user.getName());
+
+        return new ApiResponse("OTP sent to your email. Please verify.");
+    }
     
     @Override
     public List<UserResponse> getAllUsers() {
@@ -81,6 +97,34 @@ public class UserServiceImpl implements UserService {
     		return new ApiResponse(msg);
     	}
     	return new ApiResponse(msg);
+    }
+
+	@Override
+	public ApiResponse verifyOtp(OtpVerificationRequest request) {
+        Optional<User> optionalUser = userRepository.findByEmail(request.getEmail());
+
+        if (optionalUser.isEmpty()) {
+            return new ApiResponse("User not found.");
+        }
+
+        User user = optionalUser.get();
+        if (user.isVerified()) {
+            return new ApiResponse("User already verified.");
+        }
+
+        if (user.getOtp().equals(request.getOtp())) {
+            user.setVerified(true);
+            user.setOtp(null); // Clear OTP after verification
+            userRepository.save(user);
+            return new ApiResponse("OTP verified. You can now log in.");
+        } else {
+            return new ApiResponse("Invalid OTP.");
+        }
+    }
+
+    public String generateOtp() {
+        Random random = new Random();
+        return String.valueOf(100000 + random.nextInt(900000));
     }
 
 	

@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.LoginRequest;
+import com.bookmymovie.dto.OtpVerificationRequest;
 import com.bookmymovie.dto.UserRequest;
 import com.bookmymovie.service.AuthService;
 import com.bookmymovie.service.UserService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -29,8 +31,14 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse> register(@RequestBody UserRequest user) {
+    public ResponseEntity<ApiResponse> register(@Valid @RequestBody UserRequest user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(user));
+    }
+ 
+    
+    @PostMapping("/verify-otp")
+    public ResponseEntity<ApiResponse> verifyOtp(@RequestBody OtpVerificationRequest request) {
+        return ResponseEntity.ok(userService.verifyOtp(request));
     }
 }
 
