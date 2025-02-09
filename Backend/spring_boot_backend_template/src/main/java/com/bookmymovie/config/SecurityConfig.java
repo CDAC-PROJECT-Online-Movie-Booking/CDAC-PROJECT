@@ -39,16 +39,8 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-<<<<<<< HEAD
-                		"/**",
-                		"/api/auth/**",
-                	    "/swagger-ui/**",
-                	    "/v3/api-docs/**",
-                	    "/api-docs/**",  
-                	    "/swagger-ui.html",
-                	    "/webjars/**"
-=======
                     // Public endpoints
+                	"/api/users/me",
                     "/api/auth/**",
                     "/swagger-ui/**",
                     "/v3/api-docs/**",
@@ -59,7 +51,7 @@ public class SecurityConfig {
                     "/api/movies/**",  // If you have public movie listings
                     "/api/shows/**",   // If you have public show times
                     "/api/theaters/**" // If you have public theater listings
->>>>>>> 462e1ddede1dd9ca3cf3bc712bc21d70ae8c500b
+
                 ).permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
