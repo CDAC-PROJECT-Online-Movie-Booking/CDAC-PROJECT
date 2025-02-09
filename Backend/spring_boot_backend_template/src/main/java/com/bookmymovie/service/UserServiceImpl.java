@@ -39,6 +39,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private final EmailService emailService; 
     
+    public UserResponse convertToUserResponse(User user) {
+        return modelMapper.map(user, UserResponse.class);
+    }
+    
     @Override
     public ApiResponse registerUser(UserRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {

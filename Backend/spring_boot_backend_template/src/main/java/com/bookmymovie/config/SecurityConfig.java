@@ -39,12 +39,17 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                		"/api/auth/**",
-                	    "/swagger-ui/**",
-                	    "/v3/api-docs/**",
-                	    "/api-docs/**",  
-                	    "/swagger-ui.html",
-                	    "/webjars/**"
+                    // Public endpoints
+                    "/api/auth/**",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
+                    "/api-docs/**",  
+                    "/swagger-ui.html",
+                    "/webjars/**",
+                    // Add your public API endpoints here
+                    "/api/movies/**",  // If you have public movie listings
+                    "/api/shows/**",   // If you have public show times
+                    "/api/theaters/**" // If you have public theater listings
                 ).permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
@@ -61,9 +66,11 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of("http://localhost:3000"));
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));  // Added OPTIONS
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
+        config.setMaxAge(3600L); // Optional: cache preflight requests for 1 hour
+        
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;

@@ -23,4 +23,6 @@ public interface UserService {
     ApiResponse verifyOtp(OtpVerificationRequest request);
     
     String generateOtp();
+    
+    UserResponse convertToUserResponse(User user);
 }
