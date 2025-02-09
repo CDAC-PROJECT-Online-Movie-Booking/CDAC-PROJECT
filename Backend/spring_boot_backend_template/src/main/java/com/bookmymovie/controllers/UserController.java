@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.UserRequest;
 import com.bookmymovie.dto.UserResponse;
+import com.bookmymovie.model.User;
+import com.bookmymovie.security.CustomUserDetails;
 import com.bookmymovie.service.UserService;
 
 @RestController
@@ -56,5 +59,12 @@ public class UserController {
         System.out.println("Inside delete user: " + userId);
         ApiResponse msg = userService.deleteUser(userId);
         return ResponseEntity.ok(msg);
+    }
+    
+    @GetMapping("/me")
+    public ResponseEntity<UserResponse> getProfile(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        User user = userDetails.getUser();
+        UserResponse userResponse = userService.convertToUserResponse(user);
+        return ResponseEntity.ok(userResponse);
     }
 }
