@@ -116,9 +116,9 @@ public class UserServiceImpl implements UserService {
             user.setVerified(true);
             user.setOtp(null); // Clear OTP after verification
             userRepository.save(user);
-            return new ApiResponse("OTP verified. You can now log in.");
+            return new ApiResponse("success");
         } else {
-            return new ApiResponse("Invalid OTP.");
+            return new ApiResponse("error");
         }
     }
 

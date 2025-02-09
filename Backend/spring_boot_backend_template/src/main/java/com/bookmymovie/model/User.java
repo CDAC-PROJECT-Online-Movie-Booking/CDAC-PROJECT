@@ -43,8 +43,8 @@ public class User {
     private Role role = Role.USER;
     
     
-    @Column(name = "status", nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")
-    private boolean status=true;
+//    @Column(name = "status", nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")
+//    private boolean status=true;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
