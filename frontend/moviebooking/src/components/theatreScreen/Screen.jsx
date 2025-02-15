@@ -9,11 +9,7 @@ const Screen  = () => {
     const [screenDesc, setScreenDesc] = useState()
     const [capacity, setCapacity] = useState(1)
     const [showAdd, setShowAdd] = useState(true)
-    // const [showSeat, setShowSeat] = useState(false)
-    // const [screen, setScreen] = useState()
-    // const [seatTypes, setSeatTypes] = useState([])
-    // const [seatTypeId, setSeatTypeId] = useState()
-    // const [seatCount, setSeatCount] = useState()   
+
 
 
 

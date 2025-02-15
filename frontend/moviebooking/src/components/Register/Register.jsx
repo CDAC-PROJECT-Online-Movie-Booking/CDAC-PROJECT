@@ -22,6 +22,7 @@ const Register = () =>
     {
         e.preventDefault()
 
+        //toast is not working due to some logical error
         if(fname == "")
             {
                 window.alert("please enter name")

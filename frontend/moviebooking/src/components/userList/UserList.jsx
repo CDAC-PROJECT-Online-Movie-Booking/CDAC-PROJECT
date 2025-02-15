@@ -61,11 +61,6 @@ const UserList =  () => {
                     <FaEnvelope className='me-2' />
                     {user.email}
                   </td>
-                  {/* <td>
-                    <Badge pill variant={user.active ? 'success' : 'danger'}>
-                      {user.active ? 'Active' : 'Inactive'}
-                    </Badge>
-                  </td> */}
                 </tr>
               ))}
             </tbody>
