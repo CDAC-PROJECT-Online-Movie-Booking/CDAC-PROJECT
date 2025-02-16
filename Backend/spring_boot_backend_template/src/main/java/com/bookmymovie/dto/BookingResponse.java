@@ -3,7 +3,7 @@ package com.bookmymovie.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.bookmymovie.model.BookingStatus;
+import com.bookmymovie.models.BookingStatus;
 
 import lombok.Data;
 

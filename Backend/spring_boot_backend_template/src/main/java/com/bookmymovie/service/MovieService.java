@@ -5,7 +5,7 @@ import java.util.List;
 import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.MovieRequest;
 import com.bookmymovie.dto.MovieResponse;
-import com.bookmymovie.model.Movie;
+import com.bookmymovie.models.Movie;
 
 public interface MovieService {
 	

@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.exception.ResourceNotFoundException;
-import com.bookmymovie.model.Booking;
-import com.bookmymovie.model.Payment;
-import com.bookmymovie.model.PaymentMethod;
-import com.bookmymovie.model.PaymentStatus;
+import com.bookmymovie.models.Booking;
+import com.bookmymovie.models.Payment;
+import com.bookmymovie.models.PaymentMethod;
+import com.bookmymovie.models.PaymentStatus;
 import com.bookmymovie.repository.PaymentMethodRepository;
 import com.bookmymovie.repository.PaymentRepository;
 

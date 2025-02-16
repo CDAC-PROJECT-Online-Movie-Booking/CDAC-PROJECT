@@ -1,7 +1,7 @@
 package com.bookmymovie.service;
 
 import com.bookmymovie.exception.AuthenticationException;
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.User;
 import com.bookmymovie.repository.UserRepository;
 import com.bookmymovie.security.CustomUserDetails;
 import com.bookmymovie.security.JwtService;

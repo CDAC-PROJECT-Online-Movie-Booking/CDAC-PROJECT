@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bookmymovie.model.Screen;
-import com.bookmymovie.model.Theater;
+import com.bookmymovie.models.Screen;
+import com.bookmymovie.models.Theater;
 
 public interface ScreenRepository extends JpaRepository<Screen, Long> {
     List<Screen> findByTheater(Theater theater);

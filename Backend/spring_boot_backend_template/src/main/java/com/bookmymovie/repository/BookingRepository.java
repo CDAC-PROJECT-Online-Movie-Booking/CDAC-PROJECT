@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.bookmymovie.model.Booking;
-import com.bookmymovie.model.BookingStatus;
-import com.bookmymovie.model.Showtime;
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.Booking;
+import com.bookmymovie.models.BookingStatus;
+import com.bookmymovie.models.Showtime;
+import com.bookmymovie.models.User;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findByUser(User user);

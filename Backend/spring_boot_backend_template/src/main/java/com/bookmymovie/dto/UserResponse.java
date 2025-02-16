@@ -1,7 +1,5 @@
 package com.bookmymovie.dto;
 
-import com.bookmymovie.model.Role;
-
 import lombok.*;
 
 
@@ -9,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+
+import com.bookmymovie.models.Role;
 
 @Data
 @NoArgsConstructor

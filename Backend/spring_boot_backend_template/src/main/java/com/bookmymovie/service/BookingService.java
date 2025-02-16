@@ -2,11 +2,10 @@ package com.bookmymovie.service;
 
 import java.util.List;
 
-
-import com.bookmymovie.model.Booking;
-import com.bookmymovie.model.Seat;
-import com.bookmymovie.model.Showtime;
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.Booking;
+import com.bookmymovie.models.Seat;
+import com.bookmymovie.models.Showtime;
+import com.bookmymovie.models.User;
 
 public interface BookingService {
 

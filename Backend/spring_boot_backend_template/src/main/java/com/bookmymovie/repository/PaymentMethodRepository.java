@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.bookmymovie.model.PaymentMethod;
+import com.bookmymovie.models.PaymentMethod;
 
 public interface PaymentMethodRepository extends JpaRepository<PaymentMethod, Long> {
     Optional<PaymentMethod> findByName(String name);

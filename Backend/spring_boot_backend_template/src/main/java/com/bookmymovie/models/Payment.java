@@ -1,9 +1,10 @@
-package com.bookmymovie.model;
+package com.bookmymovie.models;
 
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
-import com.bookmymovie.model.PaymentStatus;
+
+import com.bookmymovie.models.PaymentStatus;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

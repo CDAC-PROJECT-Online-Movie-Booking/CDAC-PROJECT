@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.bookmymovie.model.Screen;
-import com.bookmymovie.model.Seat;
-import com.bookmymovie.model.Showtime;
+import com.bookmymovie.models.Screen;
+import com.bookmymovie.models.Seat;
+import com.bookmymovie.models.Showtime;
 
 public interface SeatRepository extends JpaRepository<Seat, Long> {
     List<Seat> findByScreen(Screen screen);

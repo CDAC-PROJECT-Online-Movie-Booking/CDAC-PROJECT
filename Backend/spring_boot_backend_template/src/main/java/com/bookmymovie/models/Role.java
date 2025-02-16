@@ -1,4 +1,4 @@
-package com.bookmymovie.model;
+package com.bookmymovie.models;
 
 public enum Role {
 

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.bookmymovie.dto.SeatResponse;
-import com.bookmymovie.model.Seat;
+import com.bookmymovie.models.Seat;
 import com.bookmymovie.service.SeatService;
 
 import lombok.RequiredArgsConstructor;
