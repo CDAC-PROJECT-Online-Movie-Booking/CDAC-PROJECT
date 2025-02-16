@@ -1,4 +1,4 @@
-package com.bookmymovie.model;
+package com.bookmymovie.models;
 
 import java.io.Serializable;
 

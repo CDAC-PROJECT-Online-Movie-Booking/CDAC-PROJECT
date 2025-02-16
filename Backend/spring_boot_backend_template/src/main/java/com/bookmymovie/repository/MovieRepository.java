@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bookmymovie.model.Movie;
+import com.bookmymovie.models.Movie;
 
 public interface MovieRepository extends JpaRepository<Movie, Long>{
 	List<Movie> findByTitleContainingIgnoreCase(String query);

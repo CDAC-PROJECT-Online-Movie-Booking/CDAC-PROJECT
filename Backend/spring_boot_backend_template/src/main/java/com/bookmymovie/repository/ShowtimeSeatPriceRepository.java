@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.bookmymovie.model.SeatType;
-import com.bookmymovie.model.Showtime;
-import com.bookmymovie.model.ShowtimeSeatPrice;
-import com.bookmymovie.model.ShowtimeSeatPriceId;
+import com.bookmymovie.models.SeatType;
+import com.bookmymovie.models.Showtime;
+import com.bookmymovie.models.ShowtimeSeatPrice;
+import com.bookmymovie.models.ShowtimeSeatPriceId;
 
 public interface ShowtimeSeatPriceRepository extends JpaRepository<ShowtimeSeatPrice, ShowtimeSeatPriceId> {
     List<ShowtimeSeatPrice> findByShowtime(Showtime showtime);

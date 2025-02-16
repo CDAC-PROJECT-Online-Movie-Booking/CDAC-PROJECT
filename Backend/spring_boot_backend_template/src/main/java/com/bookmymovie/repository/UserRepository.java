@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.bookmymovie.model.Role;
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.Role;
+import com.bookmymovie.models.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 	

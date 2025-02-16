@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.UserRequest;
 import com.bookmymovie.dto.UserResponse;
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.User;
 import com.bookmymovie.security.CustomUserDetails;
 import com.bookmymovie.service.UserService;
 

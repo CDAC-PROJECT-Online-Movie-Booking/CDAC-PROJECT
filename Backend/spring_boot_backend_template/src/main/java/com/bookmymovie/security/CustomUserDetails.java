@@ -1,9 +1,10 @@
 package com.bookmymovie.security;
 
-import com.bookmymovie.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.bookmymovie.models.User;
 
 import java.util.Collection;
 import java.util.Collections;

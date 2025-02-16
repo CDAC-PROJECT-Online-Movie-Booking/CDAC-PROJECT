@@ -1,7 +1,7 @@
 package com.bookmymovie.service;
 
-import com.bookmymovie.model.Booking;
-import com.bookmymovie.model.Payment;
+import com.bookmymovie.models.Booking;
+import com.bookmymovie.models.Payment;
 
 public interface PaymentService {
     

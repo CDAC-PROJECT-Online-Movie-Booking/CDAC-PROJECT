@@ -1,7 +1,7 @@
 package com.bookmymovie.security;
 
 
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.User;
 import com.bookmymovie.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

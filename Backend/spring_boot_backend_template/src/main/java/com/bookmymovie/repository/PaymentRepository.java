@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.bookmymovie.model.Booking;
-import com.bookmymovie.model.Payment;
-import com.bookmymovie.model.PaymentStatus;
+import com.bookmymovie.models.Booking;
+import com.bookmymovie.models.Payment;
+import com.bookmymovie.models.PaymentStatus;
 
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
     List<Payment> findByBooking(Booking booking);

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.bookmymovie.dto.MovieRequest;
 import com.bookmymovie.dto.MovieResponse;
-import com.bookmymovie.model.Movie;
+import com.bookmymovie.models.Movie;
 import com.bookmymovie.service.MovieService;
 
 import lombok.RequiredArgsConstructor;

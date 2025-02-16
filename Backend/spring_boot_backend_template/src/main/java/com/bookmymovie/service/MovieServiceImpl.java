@@ -11,10 +11,7 @@ import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.MovieRequest;
 import com.bookmymovie.dto.MovieResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
-
-//import org.springframework.beans.factory.annotation.Autowired;
-
-import com.bookmymovie.model.Movie;
+import com.bookmymovie.models.Movie;
 import com.bookmymovie.repository.MovieRepository;
 
 import jakarta.transaction.Transactional;

@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.dto.BookingRequest;
-import com.bookmymovie.model.Booking;
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.Booking;
+import com.bookmymovie.models.User;
 import com.bookmymovie.service.BookingService;
 
 import lombok.RequiredArgsConstructor;
