@@ -1,36 +1,31 @@
 package com.bookmymovie.models;
 
-import java.util.ArrayList;
 import java.util.List;
-
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
-@Getter
-@Setter
-@Table(name = "screens")
-@ToString(exclude = {"seats","showtimes"})
+@Table(name="screen")
+@Data
 public class Screen {
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long screenId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int screenId;
+	private String screenDesc;
+	private int capacity;
+	@OneToMany	
+	private List<SeatType> screencapacity;
 	
-	@NotBlank
-    private String name;
+	public List<SeatType> getscreencapacity() {
+		return screencapacity;
+	}
 	
-	private Integer capacity;
-	
-	@ManyToOne
-    @JoinColumn(name = "theater_id")
-    private Theater theater;
-
-    @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL)
-    private List<Seat> seats = new ArrayList<>();
-
-    @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL)
-    private List<Showtime> showtimes = new ArrayList<>();
 }

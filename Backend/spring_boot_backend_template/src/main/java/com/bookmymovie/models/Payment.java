@@ -38,7 +38,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "method_id")
-    private PaymentMethod paymentMethod;
+    private ScreenCapacity paymentMethod;
 
     
 }
