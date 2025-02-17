@@ -1,30 +1,21 @@
 package com.bookmymovie.models;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.Data;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@Table(name = "seat_types")
+@Data
+
+@Table(name="seat_type")
 public class SeatType {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long typeId;
-
-    @NotBlank
-    @Column(unique = true)
-    private String name;
-
-    private String description;
-
-    private Double basePrice;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int seatTypeId;
+	private String seatTypeDesc;
+	private int fare;
+	
 }
