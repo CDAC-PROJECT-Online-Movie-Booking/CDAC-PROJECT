@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.bookmymovie.model.City;
-import com.bookmymovie.model.Movie;
-import com.bookmymovie.model.Showtime;
+import com.bookmymovie.models.City;
+import com.bookmymovie.models.Movie;
+import com.bookmymovie.models.Showtime;
 
 public interface ShowtimeRepository extends JpaRepository<Showtime, Long> {
     @Query("SELECT s FROM Showtime s WHERE s.movie = :movie AND s.screen.theater.city = :city " +

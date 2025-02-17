@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookmymovie.dto.ScreenRequest;
 import com.bookmymovie.dto.TheaterRequest;
 import com.bookmymovie.dto.TheaterResponse;
-import com.bookmymovie.model.Screen;
-import com.bookmymovie.model.Theater;
+import com.bookmymovie.models.Screen;
+import com.bookmymovie.models.Theater;
 import com.bookmymovie.service.TheaterServiceImpl;
 
 import lombok.RequiredArgsConstructor;

@@ -15,8 +15,8 @@ import com.bookmymovie.dto.OtpVerificationRequest;
 import com.bookmymovie.dto.UserRequest;
 import com.bookmymovie.dto.UserResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
-import com.bookmymovie.model.Role;
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.Role;
+import com.bookmymovie.models.User;
 import com.bookmymovie.repository.UserRepository;
 
 import jakarta.transaction.Transactional;

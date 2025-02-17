@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.dto.ShowtimeRequest;
-import com.bookmymovie.model.Showtime;
-import com.bookmymovie.model.ShowtimeSeatPrice;
+import com.bookmymovie.models.Showtime;
+import com.bookmymovie.models.ShowtimeSeatPrice;
 import com.bookmymovie.service.ShowtimeService;
 
 import lombok.RequiredArgsConstructor;

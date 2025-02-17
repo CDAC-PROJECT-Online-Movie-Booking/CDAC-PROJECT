@@ -6,7 +6,7 @@ import com.bookmymovie.dto.ApiResponse;
 import com.bookmymovie.dto.OtpVerificationRequest;
 import com.bookmymovie.dto.UserRequest;
 import com.bookmymovie.dto.UserResponse;
-import com.bookmymovie.model.User;
+import com.bookmymovie.models.User;
 
 public interface UserService {
 	

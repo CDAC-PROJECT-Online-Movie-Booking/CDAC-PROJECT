@@ -1,6 +1,6 @@
 package com.bookmymovie.dto;
 
-import com.bookmymovie.model.PaymentStatus;
+import com.bookmymovie.models.PaymentStatus;
 
 import lombok.Data;
 

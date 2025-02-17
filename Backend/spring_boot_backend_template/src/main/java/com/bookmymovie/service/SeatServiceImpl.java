@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.bookmymovie.dto.SeatResponse;
 import com.bookmymovie.exception.ResourceNotFoundException;
-import com.bookmymovie.model.Seat;
-import com.bookmymovie.model.Showtime;
+import com.bookmymovie.models.Seat;
+import com.bookmymovie.models.Showtime;
 import com.bookmymovie.repository.SeatRepository;
 import com.bookmymovie.repository.ShowtimeRepository;
 
