@@ -1,28 +1,18 @@
 package com.bookmymovie.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.bookmymovie.models.Booking;
-import com.bookmymovie.models.BookingStatus;
-import com.bookmymovie.models.Showtime;
 import com.bookmymovie.models.User;
 
-public interface BookingRepository extends JpaRepository<Booking, Long> {
-    List<Booking> findByUser(User user);
-    List<Booking> findByStatus(BookingStatus status);
-    
-    @Query("SELECT b FROM Booking b WHERE b.showtime = :showtime AND b.status <> 'CANCELLED'")
-    List<Booking> findActiveBookingsForShowtime(@Param("showtime") Showtime showtime);
-    
-    @Query("SELECT m.title, SUM(b.totalAmount) " +
-            "FROM Booking b " +
-            "JOIN b.showtime s " +
-            "JOIN s.movie m " +
-            "WHERE b.status = 'CONFIRMED' " +
-            "GROUP BY m.title")
-     List<Object[]> getRevenueByMovie();
+@Repository
+public interface BookingRepository extends JpaRepository<Booking, Integer> {
+	
+	List<Booking> findByUser(User user);
+	List<Booking> findByShowShowIdAndShowDate(int showid,LocalDate date);
+
 }
