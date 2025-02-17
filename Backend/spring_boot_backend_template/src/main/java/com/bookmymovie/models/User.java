@@ -1,59 +1,42 @@
 package com.bookmymovie.models;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.beans.factory.annotation.Value;
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import lombok.NoArgsConstructor;
-import lombok.*;
-import lombok.Builder.Default;
-
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor        
-@Table(name = "users")
 @Getter
 @Setter
-@ToString(exclude = {"createdAt","bookings","password"})
+@Table(name="users")
 public class User {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-
-    @NotBlank
-    private String name;
-
-    @NotBlank
-    @Column(unique = true)
-    private String email;
-
-    @NotBlank
-    private String password;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role = Role.USER;
-    
-    
-//    @Column(name = "status", nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")
-//    private boolean status=true;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Booking> bookings = new ArrayList<>();
-
-    private String otp;
-    
-    private boolean isVerified;
-    
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int userid;
+	private String userName;
+	private boolean isAdmin;
+	private String mobile;
+	private String email;
+	private String password;
+	
+	
+	@Enumerated(EnumType.STRING)                            // create column of typebb// varchar to store the name of constant
+	@Column(length = 30)                                   // varchar(30)
+	private UserRole role = UserRole.ROLE_USER;
+	
+	
+	@Override
+	public String toString() {
+		return "User [userid=" + userid + ", userName=" + userName + ", isAdmin=" + isAdmin + ", mobile=" + mobile
+				+ ", email=" + email + "]";
+	}
+	
+	
 }
