@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.dto.BookingDTO;
 import com.bookmymovie.dto.ShowCheckDTO;
-import com.bookmymovie.services.BookingService;
+import com.bookmymovie.service.BookingService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController

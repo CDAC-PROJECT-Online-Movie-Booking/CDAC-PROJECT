@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookmymovie.dtos.SearchDTO;
-import com.bookmymovie.dtos.ShowDTO;
+import com.bookmymovie.dto.SearchDTO;
+import com.bookmymovie.dto.ShowDTO;
 import com.bookmymovie.service.ShowsService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -39,10 +39,6 @@ public class ShowsController {
         return ResponseEntity.ok(mService.todayShows());
     }
     
-    @GetMapping("search")
-    public ResponseEntity<?> searchShows(SearchDTO dto){
-        return ResponseEntity.ok(mService.searchShows(dto));
-    }
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteMovie(@PathVariable("id") int id){

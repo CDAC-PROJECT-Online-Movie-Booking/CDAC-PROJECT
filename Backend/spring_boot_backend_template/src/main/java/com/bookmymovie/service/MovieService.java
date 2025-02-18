@@ -2,14 +2,12 @@ package com.bookmymovie.service;
 
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bookmymovie.dto.MovieDTO;
 import com.bookmymovie.models.Movie;
-import com.bookmymovie.repos.MovieRepository;
+import com.bookmymovie.repository.MovieRepository;
 import com.bookmymovie.utils.StorageService;
 
 @Service

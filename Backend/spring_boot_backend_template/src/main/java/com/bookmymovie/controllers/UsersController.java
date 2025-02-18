@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookmymovie.dtos.AuthResponse;
-import com.bookmymovie.dtos.LoginDTO;
-import com.bookmymovie.dtos.UserDTO;
+import com.bookmymovie.dto.AuthResponse;
+import com.bookmymovie.dto.LoginDTO;
+import com.bookmymovie.dto.UserDTO;
 import com.bookmymovie.models.User;
 import com.bookmymovie.security.JwtUtils;
-import com.bookmymovie.services.UserService;
+import com.bookmymovie.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController

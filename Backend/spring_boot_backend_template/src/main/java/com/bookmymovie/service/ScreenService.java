@@ -1,4 +1,4 @@
-package com.bookmymovie.services;
+package com.bookmymovie.service;
 
 import java.util.List;
 import java.util.Set;
@@ -7,11 +7,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bookmymovie.dtoss.ScreenCapacityDTO;
+import com.bookmymovie.dto.ScreenCapacityDTO;
 import com.bookmymovie.models.Screen;
 import com.bookmymovie.models.ScreenCapacity;
-import com.bookmymovie.repos.ScreenCapacityRepository;
-import com.bookmymovie.repos.ScreenRepository;
+import com.bookmymovie.repository.ScreenCapacityRepository;
+import com.bookmymovie.repository.ScreenRepository;
 
 @Service
 public class ScreenService {
@@ -27,16 +27,16 @@ public class ScreenService {
 		hc.setScreen(screen);
 		
 		ScreenCapacity hcc= screpo.save(hc);
-		List<ScreenCapacity> hcs= screen.getscreencapacity();
+		List<ScreenCapacity> hcs= screen.getScreenCapacity();
 		hcs.add(hcc);
-		screen.setscreencapacity(hcs);
+		screen.setScreenCapacity(hcs);
 		repo.save(screen);
 	}
 	
 	public void deleteSeat(int id) {
 		ScreenCapacity sc=screpo.findById(id).orElse(null);
 		Screen screen=sc.getScreen();
-		List<ScreenCapacity> hcs= screen.getscreencapacity();
+		List<ScreenCapacity> hcs= screen.getScreenCapacity();
 		hcs.remove(sc);
 		repo.save(screen);
 		screpo.delete(sc);
