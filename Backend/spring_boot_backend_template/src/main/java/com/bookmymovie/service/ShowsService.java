@@ -6,7 +6,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bookmymovie.dto.SearchDTO;
 import com.bookmymovie.dto.ShowDTO;
 import com.bookmymovie.models.Shows;
 import com.bookmymovie.repository.ShowsRepository;
@@ -17,7 +16,6 @@ public class ShowsService {
 	@Autowired private ShowsRepository repo; 
 	@Autowired private MovieService mservice;
 	@Autowired private ScreenService hservice;
-	@Autowired private SearchSpecification ssp;
 	
 	public void save(ShowDTO dto) {
 		Shows show=new Shows();
@@ -35,9 +33,6 @@ public class ShowsService {
 		return repo.todaysShow();
 	}
 	
-	public List<Shows> searchShows(SearchDTO dto){
-		return repo.findAll(ssp.getfilteredShows(dto));
-	}
 	
 	public Shows findById(int id) {
 		return repo.findById(id).orElse(null);

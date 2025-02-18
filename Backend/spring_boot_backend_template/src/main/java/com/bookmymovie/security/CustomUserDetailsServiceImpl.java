@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.models.User;
-import com.bookmymovie.repos.UserRepository;
+import com.bookmymovie.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
 

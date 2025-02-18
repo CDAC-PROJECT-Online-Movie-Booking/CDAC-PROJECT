@@ -22,10 +22,10 @@ public class Screen {
 	private String screenDesc;
 	private int capacity;
 	@OneToMany	
-	private List<SeatType> screencapacity;
+	private List<ScreenCapacity> screenCapacity;
 	
-	public List<SeatType> getscreencapacity() {
-		return screencapacity;
+	public List<ScreenCapacity> getScreenCapacity() {
+		return screenCapacity;
 	}
 	
 }
