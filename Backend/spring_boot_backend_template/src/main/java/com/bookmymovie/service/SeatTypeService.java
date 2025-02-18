@@ -1,4 +1,4 @@
-package com.bookmymovie.services;
+package com.bookmymovie.service;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmymovie.models.SeatType;
-import com.bookmymovie.repos.SeatTypeRepository;
+import com.bookmymovie.repository.SeatTypeRepository;
 
 @Service
 public class SeatTypeService {
