@@ -1,4 +1,4 @@
-package com.bookmymovie.services;
+package com.bookmymovie.service;
 
 import java.util.List;
 
