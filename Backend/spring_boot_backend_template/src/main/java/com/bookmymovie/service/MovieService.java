@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bookmymovie.dtos.MovieDTO;
+import com.bookmymovie.dto.MovieDTO;
 import com.bookmymovie.models.Movie;
 import com.bookmymovie.repos.MovieRepository;
 import com.bookmymovie.utils.StorageService;

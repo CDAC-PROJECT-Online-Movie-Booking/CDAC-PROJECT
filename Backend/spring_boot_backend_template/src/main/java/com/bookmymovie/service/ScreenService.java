@@ -7,7 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bookmymovie.dtos.ScreenCapacityDTO;
+import com.bookmymovie.dtoss.ScreenCapacityDTO;
 import com.bookmymovie.models.Screen;
 import com.bookmymovie.models.ScreenCapacity;
 import com.bookmymovie.repos.ScreenCapacityRepository;
