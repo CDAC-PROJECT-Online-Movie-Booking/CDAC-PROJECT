@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.bookmymovie.dtos.BookingDTO;
 import com.bookmymovie.dtos.ShowCheckDTO;
 import com.bookmymovie.models.Booking;
-import com.bookmymovie.repos.BookingRepository;
+import com.bookmymovie.repository.*;
 
 @Service
 public class BookingService {
