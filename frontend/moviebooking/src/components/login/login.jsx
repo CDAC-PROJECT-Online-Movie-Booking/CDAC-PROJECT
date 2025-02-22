@@ -15,34 +15,39 @@ const Login =  ()=>
     const {role,setRole} = useAuth();
 
 
-    const onLogin = async (e) =>
-    {
-        e.preventDefault();
-
-        if(email=="")
-        {
-            toast.warning("please enter email")
-        }
-        else if(password == "")
-        {
-            toast.warning("please enter password")
-        }
-        else{
-           const response = await axios.post("http://localhost:8080/api/users/login",{email,password});
-
-           sessionStorage["token"] = response.data.jwt;
-           sessionStorage["userId"] = response.data.user.userid;
-           sessionStorage["role"] = response.data.user.admin ? "Admin" : "User";
-           sessionStorage["email"] = response.data.user.email;
-           sessionStorage["userName"] = response.data.user.userName;
-
-           setRole(sessionStorage["role"]);
-           setIsLogin(true);
-
-           navigate("/")
-           
-        }
-    }
+    const onLogin = async (e) => {
+      e.preventDefault();
+  
+      if (email === "") {
+          toast.warning("Please enter email");
+      } else if (password === "") {
+          toast.warning("Please enter password");
+      } else {
+          try {
+              const response = await axios.post("http://localhost:8080/api/users/login", { email, password });
+  
+              // Store the authentication details
+              sessionStorage["token"] = response.data.jwt;
+              sessionStorage["userId"] = response.data.user.userid;
+              sessionStorage["role"] = response.data.user.admin ? "Admin" : "User";
+              sessionStorage["email"] = response.data.user.email;
+              sessionStorage["userName"] = response.data.user.userName;
+  
+              setRole(sessionStorage["role"]);
+              setIsLogin(true);
+  
+              toast.success("Login successful!");
+              navigate("/");
+          } catch (error) {
+              if (error.response && error.response.status === 401) {
+                  toast.error("Invalid email or password. Please try again.");
+              } else {
+                  toast.error("Something went wrong. Please try again later.");
+              }
+          }
+      }
+  };
+  
 
 
     return (
