@@ -5,7 +5,7 @@ import { BrowserRouter ,Routes , Route} from 'react-router-dom';
 import Login from './components/login/login';
 import Home from './components/Home/Home';
 import Register from './components/Register/Register';
-import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import Navbar from './components/navbar/Navbar';
 import MyCarousel from './components/carousel/MyCarousel';
 import UserList from './components/userList/UserList';
@@ -38,8 +38,10 @@ function App() {
           <Route path='/mybookings' element={<MyBookings/>}></Route>
           <Route path='/bookings' element={<Bookings/>}></Route>
           <Route path='/reports' element={<Reports/>}></Route>
+          
         </Route>
         </Routes>
+        <ToastContainer position="top-right" autoClose={3000} />
       </BrowserRouter>
     </AuthProvider>
     
