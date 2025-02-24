@@ -9,8 +9,9 @@ import com.bookmymovie.models.SeatType;
 import com.bookmymovie.repository.SeatTypeRepository;
 
 @Service
-public class SeatTypeService {
-	@Autowired private SeatTypeRepository repo;
+public class SeatTypeService implements SeatTypeServiceIntf {
+	@Autowired 
+	private SeatTypeRepository repo;
 
 	public void save(SeatType st) {
 		repo.save(st);

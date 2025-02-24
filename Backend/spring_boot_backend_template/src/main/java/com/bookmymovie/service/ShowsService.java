@@ -11,7 +11,7 @@ import com.bookmymovie.models.Shows;
 import com.bookmymovie.repository.ShowsRepository;
 
 @Service
-public class ShowsService {
+public class ShowsService implements ShowServiceIntf{
 
 	@Autowired private ShowsRepository repo; 
 	@Autowired private MovieService mservice;

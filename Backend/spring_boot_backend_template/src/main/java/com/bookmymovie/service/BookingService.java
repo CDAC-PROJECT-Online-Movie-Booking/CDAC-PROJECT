@@ -13,7 +13,7 @@ import com.bookmymovie.models.Booking;
 import com.bookmymovie.repository.*;
 
 @Service
-public class BookingService {
+public class BookingService implements BookingServiceItrf {
 
 	@Autowired private BookingRepository repo;
 	@Autowired private ShowsService sservice;

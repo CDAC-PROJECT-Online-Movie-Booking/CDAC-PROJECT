@@ -15,7 +15,7 @@ import com.bookmymovie.models.User;
 import com.bookmymovie.repository.UserRepository;
 
 @Service
-public class UserService {
+public class UserService implements UserServiceIntf {
 
 	@Autowired 
 	private UserRepository repo;

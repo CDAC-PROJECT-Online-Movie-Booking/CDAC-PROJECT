@@ -14,7 +14,7 @@ import com.bookmymovie.repository.ScreenCapacityRepository;
 import com.bookmymovie.repository.ScreenRepository;
 
 @Service
-public class ScreenService {
+public class ScreenService implements ScreenServiceIntf {
 	@Autowired private ScreenRepository repo;
 	@Autowired private ScreenCapacityRepository screpo;
 	@Autowired private SeatTypeService sservice;
