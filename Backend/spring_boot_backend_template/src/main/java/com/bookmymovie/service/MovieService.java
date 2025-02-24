@@ -11,7 +11,7 @@ import com.bookmymovie.repository.MovieRepository;
 import com.bookmymovie.utils.StorageService;
 
 @Service
-public class MovieService {
+public class MovieService implements MovieServiceIntf{
 
 	@Autowired private MovieRepository repo;
 	@Autowired private StorageService storage;
