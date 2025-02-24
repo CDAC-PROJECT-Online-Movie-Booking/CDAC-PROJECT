@@ -21,6 +21,21 @@ public class BookingService implements BookingServiceItrf {
 	@Autowired private UserService uservice;
 	
 	public void save(BookingDTO dto) {
+		
+		
+		List<Integer> seatNumbers = IntStream.of(dto.getSeatnums())
+                .boxed()
+                .collect(Collectors.toList());
+		
+		for (Integer seatNum : seatNumbers) {
+            Booking existingBooking = repo.findByIdWithLock(seatNum).orElse(null);
+            
+            if (existingBooking != null && existingBooking.getStatus().equals("Booked")) {
+                throw new RuntimeException("Seat " + seatNum + " is already booked!");
+            }
+        }
+		
+		
 		Booking bk=new Booking();
 		bk.setShowDate(dto.getBookDate());
 		bk.setNoOfSeats(dto.getNoOfSeats());
